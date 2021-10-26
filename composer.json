@@ -1,0 +1,44 @@
+{
+    "name": "bkpsdm-karawang/sim-asn-php-client",
+    "description": "PHP Client for SIM-ASN Service BKPSDM Karawang",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Denma Syarikin",
+            "email": "denmasyarikin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support": "^8.5",
+        "illuminate/routing": "^8.5",
+        "illuminate/http": "^8.5"
+    },
+    "suggest": {
+        "laravel/framework": "^8.5"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "SIM_ASN\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SIM_ASN\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SIM_ASN\\Laravel\\Providers\\LaravelServiceProvider"
+            ],
+            "aliases": {
+                "SIM_ASN": "SIM_ASN\\Laravel\\Facades\\Client",
+                "SIM_ASN_Route": "SIM_ASN\\Laravel\\Facades\\Route"
+            }
+        }
+    }
+}
