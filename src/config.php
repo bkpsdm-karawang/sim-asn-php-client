@@ -27,6 +27,7 @@ return [
     | SIM-ASN Routes
     */
     'route_proxy_enabled' => false,
+    'route_proxy_auto' => true,
     'route_proxy_prefix' => 'sim-asn',
     'route_proxy_middleware' => ['auth'],
 ];

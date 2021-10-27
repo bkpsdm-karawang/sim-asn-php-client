@@ -8,7 +8,6 @@ use GuzzleHttp\Psr7\Response;
 use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
 use SIM_ASN\Request\Base as BaseRequest;
-use SIM_ASN\Request\Module;
 use SIM_ASN\Resource\AccessToken;
 
 abstract class Client extends Guzzle
@@ -84,14 +83,6 @@ abstract class Client extends Guzzle
         }
 
         throw new \Exception('Access token not found');
-    }
-
-    /**
-     * create module.
-     */
-    public function module(string $module): Module
-    {
-        return new Module($this, $module);
     }
 
     /**

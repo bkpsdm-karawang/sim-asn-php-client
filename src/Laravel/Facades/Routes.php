@@ -3,14 +3,12 @@
 namespace SIM_ASN\Laravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use SIM_ASN\AppClient as Concret;
+use SIM_ASN\Laravel\Router;
 
 /**
- * @method static \SIM_ASN\Client module(string $name)
- * @method static \SIM_ASN\Modules\User user()
- * @method static \SIM_ASN\Modules\Pegawai pegawai()
+ * @method static void routes($callback = null, array $options = [])
  */
-class AppClient extends Facade
+class Routes extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -19,6 +17,6 @@ class AppClient extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return Concret::class;
+        return Router::class;
     }
 }

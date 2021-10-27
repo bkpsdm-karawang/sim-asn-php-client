@@ -4,6 +4,8 @@ namespace SIM_ASN;
 
 use SIM_ASN\Laravel\Facades\OauthClient;
 use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Modules\Pegawai as PegawaiModule;
+use SIM_ASN\Modules\User as UserModule;
 
 class AppClient extends Client
 {
@@ -34,7 +36,7 @@ class AppClient extends Client
             return $accessToken;
         }
 
-        $accessToken = $this->requestAccessToken();
+        $accessToken = OauthClient::requestAppToken();
         $path = $this->localConfig['app_token_path'];
 
         $this->saveAccessToken($path, $accessToken);
@@ -87,10 +89,26 @@ class AppClient extends Client
     }
 
     /**
-     * request new access token to sim-asn server.
+     * create module.
      */
-    protected function requestAccessToken()
+    public function module(string $module)
     {
-        return OauthClient::requestAppToken();
+        return (new ModuleManager($this))->module($module);
+    }
+
+    /**
+     * create module user.
+     */
+    public function user(): UserModule
+    {
+        return (new ModuleManager($this))->createUserDriver();
+    }
+
+    /**
+     * create module pegawai.
+     */
+    public function pegawai(): PegawaiModule
+    {
+        return (new ModuleManager($this))->createPegawaiDriver();
     }
 }

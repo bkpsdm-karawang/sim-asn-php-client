@@ -10,11 +10,6 @@ use InvalidArgumentException;
 use SIM_ASN\Laravel\Facades\UserClient;
 use SIM_ASN\Request\Oauth;
 
-/**
- * @method \SIM_ASN\Resource\AccessToken requestAccessToken(string $code = null)
- * @method \SIM_ASN\Resource\AccessToken requestRefreshTokenToken(string $refreshToken = null)
- * @method \SIM_ASN\Resource\AccessToken requestAppToken()
- */
 class OauthClient extends Client
 {
     /**

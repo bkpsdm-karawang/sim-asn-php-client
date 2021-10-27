@@ -1,9 +1,9 @@
 <?php
 
-namespace SIM_ASN\Request\User;
+namespace SIM_ASN\Request\Pegawai;
 
 use SIM_ASN\Request\BaseListing;
-use SIM_ASN\Resource\User;
+use SIM_ASN\Resource\Pegawai;
 
 class Listing extends BaseListing
 {
@@ -12,13 +12,13 @@ class Listing extends BaseListing
      *
      * @var string
      */
-    protected $endpoint = '/api/user';
+    protected $endpoint = '/api/pegawai';
 
     /**
      * map object from sim-asn.
      */
     public function mapObject(array $data)
     {
-        return new User($data);
+        return new Pegawai($data);
     }
 }

@@ -43,7 +43,7 @@ abstract class Base extends Request
 
         $uri = $this->endpoint;
         if (count($query) > 0) {
-            $uri = http_build_query($query);
+            $uri .= '?' . http_build_query($query);
         }
 
         parent::__construct(
@@ -74,15 +74,27 @@ abstract class Base extends Request
     /**
      * generate request body.
      */
-    protected function generateRequestBody($body = null): string
+    protected function generateRequestBody($body = null): ?string
     {
-        return Utils::jsonEncode($body);
+        if (!is_null($body)) {
+            return Utils::jsonEncode($body);
+        }
+
+        return null;
     }
 
     /**
      * map data from sim-asn.
      */
     public function mapData(array $data)
+    {
+        return $this->mapObject($data);
+    }
+
+    /**
+     * map object from sim-asn.
+     */
+    public function mapObject(array $data)
     {
         return $data;
     }

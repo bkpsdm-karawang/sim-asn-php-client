@@ -2,10 +2,10 @@
 
 namespace SIM_ASN\Request\User;
 
-use SIM_ASN\Request\BaseListing;
+use SIM_ASN\Request\BaseDetail;
 use SIM_ASN\Resource\User;
 
-class Listing extends BaseListing
+class Detail extends BaseDetail
 {
     /**
      * endpoint for request.

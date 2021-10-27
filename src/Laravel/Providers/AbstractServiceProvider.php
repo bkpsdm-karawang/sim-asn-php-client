@@ -4,6 +4,7 @@ namespace SIM_ASN\Laravel\Providers;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use SIM_ASN\AppClient;
+use SIM_ASN\Laravel\Router;
 use SIM_ASN\OauthClient;
 use SIM_ASN\UserClient;
 
@@ -25,6 +26,10 @@ abstract class AbstractServiceProvider extends LaravelServiceProvider
 
         if ($this->config('app_enabled')) {
             $this->createAppClient();
+        }
+
+        if ($this->config('route_proxy_enabled')) {
+            $this->createRouter();
         }
     }
 
@@ -85,6 +90,16 @@ abstract class AbstractServiceProvider extends LaravelServiceProvider
     {
         $this->app->singleton(AppClient::class, function () {
             return new AppClient(null, $this->config());
+        });
+    }
+
+    /**
+     * create proxy route.
+     */
+    protected function createRouter()
+    {
+        $this->app->singleton(Router::class, function ($app) {
+            return new Router($app->make('router'), $this->config());
         });
     }
 
