@@ -168,7 +168,7 @@ abstract class Client extends Guzzle
             $request = new $method(
                 $this->localConfig,
                 $this->accessToken,
-                count($args) > 0 ? $args[0] : null
+                ...$args
             );
 
             return $this->process($request);

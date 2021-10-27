@@ -7,12 +7,12 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use SIM_ASN\Laravel\Facades\AppClient;
 
-class SkpdController extends Controller
+class UnitKerjaController extends Controller
 {
     /**
      * module
      *
-     * @var \SIM_ASN\Modules\Skpd
+     * @var \SIM_ASN\Modules\UnitKerja
      */
     protected $module;
 
@@ -21,7 +21,7 @@ class SkpdController extends Controller
      */
     public function __construct(AppClient $manager)
     {
-        $this->module = $manager::skpd();
+        $this->module = $manager::unitKerja();
     }
 
     /**
@@ -31,10 +31,10 @@ class SkpdController extends Controller
      *
      * @return JsonResponse
      */
-    public function getDetail(Request $request, $id)
+    public function getDetail(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getDetail($id);
+            $data = $this->module->getDetail($id, $unitId);
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -48,10 +48,10 @@ class SkpdController extends Controller
      *
      * @return JsonResponse
      */
-    public function getHierarki(Request $request, $id)
+    public function getHierarki(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getHierarki($id);
+            $data = $this->module->getHierarki($id, $unitId);
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -65,10 +65,10 @@ class SkpdController extends Controller
      *
      * @return JsonResponse
      */
-    public function getKartuIdentitas(Request $request, $id)
+    public function getKartuIdentitas(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getKartuIdentitas($id);
+            $data = $this->module->getKartuIdentitas($id, $unitId);
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -82,10 +82,10 @@ class SkpdController extends Controller
      *
      * @return JsonResponse
      */
-    public function getKontak(Request $request, $id)
+    public function getKontak(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getKontak($id);
+            $data = $this->module->getKontak($id, $unitId);
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -99,10 +99,10 @@ class SkpdController extends Controller
      *
      * @return JsonResponse
      */
-    public function getAlamat(Request $request, $id)
+    public function getAlamat(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getAlamat($id);
+            $data = $this->module->getAlamat($id, $unitId);
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -116,10 +116,10 @@ class SkpdController extends Controller
      *
      * @return JsonResponse
      */
-    public function getKeluarga(Request $request, $id)
+    public function getKeluarga(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getKeluarga($id);
+            $data = $this->module->getKeluarga($id, $unitId);
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -133,10 +133,10 @@ class SkpdController extends Controller
      *
      * @return JsonResponse
      */
-    public function getPendidikan(Request $request, $id)
+    public function getPendidikan(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getPendidikan($id);
+            $data = $this->module->getPendidikan($id, $unitId);
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);

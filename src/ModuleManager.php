@@ -6,6 +6,8 @@ use Illuminate\Support\Manager as BaseManager;
 use InvalidArgumentException;
 use SIM_ASN\AppClient;
 use SIM_ASN\Modules\Pegawai;
+use SIM_ASN\Modules\Skpd;
+use SIM_ASN\Modules\UnitKerja;
 use SIM_ASN\Modules\User;
 
 class ModuleManager extends BaseManager
@@ -44,6 +46,22 @@ class ModuleManager extends BaseManager
     public function createPegawaiDriver(): Pegawai
     {
         return new Pegawai($this->client->getAccessToken(), $this->client->localConfig);
+    }
+
+    /**
+     * create skpd driver
+     */
+    public function createSkpdDriver(): Skpd
+    {
+        return new Skpd($this->client->getAccessToken(), $this->client->localConfig);
+    }
+
+    /**
+     * create unit kerja driver
+     */
+    public function createUnitKerjaDriver(): UnitKerja
+    {
+        return new UnitKerja($this->client->getAccessToken(), $this->client->localConfig);
     }
 
     /**

@@ -84,6 +84,16 @@ abstract class Base extends Request
     }
 
     /**
+     * set endpoint
+     */
+    public function setEndpoint(array $endpoint): self
+    {
+        $this->endpoint = $endpoint;
+
+        return $this;
+    }
+
+    /**
      * map data from sim-asn.
      */
     public function mapData(array $data)

@@ -5,7 +5,9 @@ namespace SIM_ASN;
 use SIM_ASN\Laravel\Facades\OauthClient;
 use SIM_ASN\Resource\AccessToken;
 use SIM_ASN\Modules\Pegawai as PegawaiModule;
+use SIM_ASN\Modules\Skpd as SkpdModule;
 use SIM_ASN\Modules\User as UserModule;
+use SIM_ASN\Modules\UnitKerja as UnitKerjaModule;
 
 class AppClient extends Client
 {
@@ -110,5 +112,21 @@ class AppClient extends Client
     public function pegawai(): PegawaiModule
     {
         return (new ModuleManager($this))->createPegawaiDriver();
+    }
+
+    /**
+     * create module skpd.
+     */
+    public function skpd(): SkpdModule
+    {
+        return (new ModuleManager($this))->createSkpdDriver();
+    }
+
+    /**
+     * create module skpd.
+     */
+     public function unitKerja(): UnitKerjaModule
+    {
+        return (new ModuleManager($this))->createUnitKerjaDriver();
     }
 }

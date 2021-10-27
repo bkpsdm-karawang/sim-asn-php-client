@@ -9,6 +9,7 @@ use SIM_ASN\AppClient as Concret;
  * @method static \SIM_ASN\Client module(string $name)
  * @method static \SIM_ASN\Modules\User user()
  * @method static \SIM_ASN\Modules\Pegawai pegawai()
+ * @method static \SIM_ASN\Modules\Skpd skpd()
  */
 class AppClient extends Facade
 {

@@ -4,9 +4,18 @@ namespace SIM_ASN\Request;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use SIM_ASN\Resource\AccessToken;
 
 abstract class BaseListing extends Base
 {
+    /**
+     * constructor.
+     */
+    public function __construct(array $localConfig = [], AccessToken $accessToken = null, array $query = [])
+    {
+        parent::__construct($localConfig, $accessToken, null, $query);
+    }
+
     /**
      * map data from sim-asn.
      */
