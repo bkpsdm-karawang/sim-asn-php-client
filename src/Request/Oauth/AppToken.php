@@ -2,30 +2,20 @@
 
 namespace SIM_ASN\Request\Oauth;
 
-use SIM_ASN\Request\Base;
-use SIM_ASN\Resource\AccessToken;
+use GuzzleHttp\Utils;
 
-class AppToken extends Base
+class AppToken extends AccessToken
 {
     /**
-     * method of request
-     *
-     * @var string
+     * generate request body.
      */
-    protected $method = 'POST';
-
-    /**
-     * endpoint for request
-     *
-     * @var string
-     */
-    protected $endpoint = '/oauth/token';
-
-    /**
-     * map data from sim-asn
-     */
-    public function mapData(array $data)
+    protected function generateRequestBody($body = null): string
     {
-        return new AccessToken($data);
+        return Utils::jsonEncode([
+            'grant_type' => 'client_credentials',
+            'client_id' => $this->localConfig['client_id'],
+            'client_secret' => $this->localConfig['client_secret'],
+            'scope' => $this->localConfig['app_scope'],
+       ]);
     }
 }

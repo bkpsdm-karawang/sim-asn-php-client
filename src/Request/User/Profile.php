@@ -8,14 +8,14 @@ use SIM_ASN\Resource\User;
 class Profile extends Base
 {
     /**
-     * endpoint for request
+     * endpoint for request.
      *
      * @var string
      */
     protected $endpoint = '/api/me';
 
     /**
-     * map data from sim-asn
+     * map data from sim-asn.
      */
     public function mapData(array $data)
     {

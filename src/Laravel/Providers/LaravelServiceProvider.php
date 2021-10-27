@@ -10,7 +10,7 @@ class LaravelServiceProvider extends AbstractServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $configPath = realpath(__DIR__.'/../config/sim_asn.php');
+            $configPath = realpath(__DIR__.'/../../config.php');
             $this->publishes([$configPath => config_path('sim_asn.php')], 'config');
         }
     }

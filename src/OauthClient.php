@@ -11,32 +11,32 @@ use SIM_ASN\Laravel\Facades\UserClient;
 use SIM_ASN\Request\Oauth;
 
 /**
- * @method \SIM_ASN\Resource\AccessToken getAccessToken(string $code = null)
- * @method \SIM_ASN\Resource\AccessToken getRefreshTokenToken(string $refreshToken = null)
- * @method \SIM_ASN\Resource\AccessToken getAppToken()
+ * @method \SIM_ASN\Resource\AccessToken requestAccessToken(string $code = null)
+ * @method \SIM_ASN\Resource\AccessToken requestRefreshTokenToken(string $refreshToken = null)
+ * @method \SIM_ASN\Resource\AccessToken requestAppToken()
  */
 class OauthClient extends Client
 {
     /**
-     * requests
+     * requests.
      *
      * @var array
      */
     protected $requests = [
-        'getAccessToken' => Oauth\AccessToken::class,
-        'getRefreshTokenToken' => Oauth\RefreshToken::class,
-        'getAppToken' => Oauth\AppToken::class
+        'requestAccessToken' => Oauth\AccessToken::class,
+        'requestRefreshTokenToken' => Oauth\RefreshToken::class,
+        'requestAppToken' => Oauth\AppToken::class,
     ];
 
     /**
-     * handle callback with redirect
+     * handle callback with redirect.
      *
      * @return RedirectResponse|array
      */
     public function handleCallback(Request $request, Closure $createToken = null)
     {
         try {
-            $accessToken = $this->getAccessToken($request->code);
+            $accessToken = $this->requestAccessToken($request->code);
             $user = UserClient::setAccessToken($accessToken)->getProfile();
 
             if (isset($createToken) && is_callable($createToken)) {
@@ -60,7 +60,7 @@ class OauthClient extends Client
      */
     protected function redirect($state = 'login', string $key, string $message): RedirectResponse
     {
-        $redirects = $this->config('user_redirect_state');
+        $redirects = $this->localConfig['user_redirect_state'];
 
         if (array_key_exists($state, $redirects)) {
             return new RedirectResponse($redirects[$state]."?{$key}={$message}");

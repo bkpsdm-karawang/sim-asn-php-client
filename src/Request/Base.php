@@ -4,81 +4,83 @@ namespace SIM_ASN\Request;
 
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Utils;
+use SIM_ASN\ConfigTrait;
 use SIM_ASN\Resource\AccessToken;
 
 abstract class Base extends Request
 {
-    /**
-     * sim-asn configuration
-     *
-     * @var array
-     */
-    protected $config = [];
+    use ConfigTrait;
 
     /**
-     * Access token
+     * Access token.
      *
      * @var AccessToken
      */
     protected $accessToken;
 
     /**
-     * method of request
+     * method of request.
      *
      * @var string
      */
     protected $method = 'GET';
 
     /**
-     * endpoint for request
+     * endpoint for request.
      *
      * @var string
      */
     protected $endpoint = '/';
 
     /**
-     * constructor
+     * constructor.
      */
-    public function __construct(AccessToken $accessToken = null, $body = null)
+    public function __construct(array $localConfig = [], AccessToken $accessToken = null, $body = null, array $query = [])
     {
+        $this->configureLocal($localConfig);
+
         $this->accessToken = $accessToken;
-        $this->config = config('sim_asn');
+
+        $uri = $this->endpoint;
+        if (count($query) > 0) {
+            $uri = http_build_query($query);
+        }
 
         parent::__construct(
             $this->method,
-            $this->endpoint,
+            $uri,
             $this->generateRequestHeader(),
             $this->generateRequestBody($body)
         );
     }
 
     /**
-    * generate request header
-    */
+     * generate request header.
+     */
     protected function generateRequestHeader(): array
     {
         $headers = [
             'Accept' => 'application/json',
-            'Content-Type' => 'application/json'
+            'Content-Type' => 'application/json',
         ];
 
         if ($this->accessToken) {
-            $headers['Authorization'] = "Bearer {$this->accessToken->getAccessToken()}";
+            $headers['Authorization'] = "Bearer {$this->accessToken->access_token}";
         }
 
         return $headers;
     }
 
     /**
-    * generate request body
-    */
+     * generate request body.
+     */
     protected function generateRequestBody($body = null): string
     {
         return Utils::jsonEncode($body);
     }
 
     /**
-     * map data from sim-asn
+     * map data from sim-asn.
      */
     public function mapData(array $data)
     {

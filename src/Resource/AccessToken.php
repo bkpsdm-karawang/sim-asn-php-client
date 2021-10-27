@@ -4,23 +4,18 @@ namespace SIM_ASN\Resource;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use InvalidArgumentException;
+use SIM_ASN\Laravel\Facades\OauthClient;
 
 class AccessToken extends AbstractResource implements CastsAttributes
 {
     /**
-     * day before expire
-     *
-     * @var int
-     */
-    protected $refreshTokenDay = 7;
-
-    /**
      * Cast the given value.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  array  $attributes
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param string                              $key
+     * @param mixed                               $value
+     * @param array                               $attributes
+     *
      * @return array
      */
     public function get($model, $key, $value, $attributes)
@@ -31,23 +26,32 @@ class AccessToken extends AbstractResource implements CastsAttributes
     /**
      * Prepare the given value for storage.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  array  $value
-     * @param  array  $attributes
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param string                              $key
+     * @param array                               $value
+     * @param array                               $attributes
+     *
      * @return string
      */
     public function set($model, $key, $value, $attributes)
     {
         if ($value instanceof static) {
-            return json_encode($value->getData());
+            return json_encode($value->toArray());
         }
 
         throw new InvalidArgumentException('Value not instance of AcessToken class');
     }
 
     /**
-     * cast to string
+     * refresh.
+     */
+    public function refresh(): AccessToken
+    {
+        return OauthClient::requestRefreshTokenToken($this->refresh_token);
+    }
+
+    /**
+     * cast to string.
      */
     public function __toString(): string
     {

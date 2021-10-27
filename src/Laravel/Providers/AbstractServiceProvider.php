@@ -2,10 +2,10 @@
 
 namespace SIM_ASN\Laravel\Providers;
 
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use SIM_ASN\AppClient;
 use SIM_ASN\OauthClient;
 use SIM_ASN\UserClient;
-use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 abstract class AbstractServiceProvider extends LaravelServiceProvider
 {
@@ -29,7 +29,7 @@ abstract class AbstractServiceProvider extends LaravelServiceProvider
     }
 
     /**
-     * apply configuration
+     * apply configuration.
      */
     protected function configure()
     {
@@ -37,15 +37,15 @@ abstract class AbstractServiceProvider extends LaravelServiceProvider
             $this->app->configure('sim_asn');
         }
 
-        $path = realpath(__DIR__.'/../config/sim_asn.php');
+        $path = realpath(__DIR__.'/../../config.php');
         $this->mergeConfigFrom($path, 'sim_asn');
     }
 
     /**
      * Helper to get the config values.
      *
-     * @param  string  $key
-     * @param  string  $default
+     * @param string $key
+     * @param string $default
      *
      * @return mixed
      */
@@ -59,32 +59,32 @@ abstract class AbstractServiceProvider extends LaravelServiceProvider
     }
 
     /**
-     * create oauth client
+     * create oauth client.
      */
     protected function createOauthClient()
     {
         $this->app->singleton(OauthClient::class, function () {
-            return new OauthClient();
+            return new OauthClient(null, $this->config());
         });
     }
 
     /**
-     * create app service
+     * create app service.
      */
     protected function createUserClient()
     {
         $this->app->singleton(UserClient::class, function () {
-            return new UserClient();
+            return new UserClient(null, $this->config());
         });
     }
 
     /**
-     * create app service
+     * create app service.
      */
     protected function createAppClient()
     {
         $this->app->singleton(AppClient::class, function () {
-            return new AppClient();
+            return new AppClient(null, $this->config());
         });
     }
 
@@ -97,7 +97,8 @@ abstract class AbstractServiceProvider extends LaravelServiceProvider
     {
         return [
             OauthClient::class,
-            UserClient::class
+            UserClient::class,
+            AppClient::class,
         ];
     }
 }

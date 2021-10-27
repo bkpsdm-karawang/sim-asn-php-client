@@ -8,6 +8,7 @@ use SIM_ASN\UserClient as Concret;
 /**
  * @method static \SIM_ASN\Resource\User getProfile()
  * @method static $this setAccessToken(\SIM_ASN\Resource\AccessToken $accessToken)
+ * @method static void onRefreshToken(\Closure $onSave)
  */
 class UserClient extends Facade
 {
