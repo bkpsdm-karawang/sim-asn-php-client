@@ -12,7 +12,7 @@ class Detail extends BaseDetail
      *
      * @var string
      */
-    protected $endpoint = '/api/user';
+    protected $endpoint = '/api/user/{id}';
 
     /**
      * map object from sim-asn.
