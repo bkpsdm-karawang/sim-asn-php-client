@@ -7,12 +7,12 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use SIM_ASN\Laravel\Facades\AppClient;
 
-class UserController extends Controller
+class SotkController extends Controller
 {
     /**
      * module.
      *
-     * @var \SIM_ASN\Modules\User
+     * @var \SIM_ASN\Modules\Sotk
      */
     protected $module;
 
@@ -21,36 +21,20 @@ class UserController extends Controller
      */
     public function __construct(AppClient $manager)
     {
-        $this->module = $manager::user();
+        $this->module = $manager::sotk();
     }
 
     /**
-     * get list.
-     *
-     * @return JsonResponse
-     */
-    public function getList(Request $request)
-    {
-        try {
-            $data = $this->module->getList($request->query());
-
-            return new JsonResponse($data);
-        } catch (ClientException $error) {
-            return $this->handleClientException($error);
-        }
-    }
-
-    /**
-     * get detail.
+     * get data.
      *
      * @param mixed $id
      *
      * @return JsonResponse
      */
-    public function getDetail(Request $request, $id)
+    public function get(Request $request, $url)
     {
         try {
-            $data = $this->module->getDetail($id);
+            $data = $this->module->getRequest($url, $request->query());
 
             return new JsonResponse($data);
         } catch (ClientException $error) {

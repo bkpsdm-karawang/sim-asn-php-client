@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     /**
-     * handle exception from sim-asn
+     * handle exception from sim-asn.
      */
     protected function handleClientException(ClientException $exception)
     {

@@ -10,7 +10,7 @@ use SIM_ASN\Laravel\Facades\AppClient;
 class PegawaiController extends Controller
 {
     /**
-     * module
+     * module.
      *
      * @var \SIM_ASN\Modules\Pegawai
      */
@@ -33,6 +33,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getList($request->query());
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -50,6 +51,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getDetail($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -67,6 +69,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getHierarki($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -84,6 +87,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getKartuIdentitas($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -101,6 +105,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getKontak($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -118,6 +123,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getAlamat($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -135,6 +141,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getKeluarga($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -152,6 +159,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getRiwayatKeluarga($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -169,6 +177,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getRiwayatGolongan($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -186,6 +195,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getRiwayatJabatan($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -203,6 +213,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getRiwayatPendidikan($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -220,6 +231,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getRiwayatDiklat($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -237,6 +249,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getRiwayatPelanggaran($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -254,6 +267,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getDokumen($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -271,6 +285,7 @@ class PegawaiController extends Controller
     {
         try {
             $data = $this->module->getFile($id);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);

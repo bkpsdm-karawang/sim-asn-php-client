@@ -3,11 +3,12 @@
 namespace SIM_ASN;
 
 use SIM_ASN\Laravel\Facades\OauthClient;
-use SIM_ASN\Resource\AccessToken;
 use SIM_ASN\Modules\Pegawai as PegawaiModule;
 use SIM_ASN\Modules\Skpd as SkpdModule;
-use SIM_ASN\Modules\User as UserModule;
+use SIM_ASN\Modules\Sotk as SotkModule;
 use SIM_ASN\Modules\UnitKerja as UnitKerjaModule;
+use SIM_ASN\Modules\User as UserModule;
+use SIM_ASN\Resource\AccessToken;
 
 class AppClient extends Client
 {
@@ -47,7 +48,7 @@ class AppClient extends Client
     }
 
     /**
-     * save acess token
+     * save acess token.
      */
     protected function saveAccessToken($path, AccessToken $accessToken, bool $storage = false): void
     {
@@ -125,8 +126,16 @@ class AppClient extends Client
     /**
      * create module skpd.
      */
-     public function unitKerja(): UnitKerjaModule
+    public function unitKerja(): UnitKerjaModule
     {
         return (new ModuleManager($this))->createUnitKerjaDriver();
+    }
+
+    /**
+     * create module sotk.
+     */
+    public function sotk(): SotkModule
+    {
+        return (new ModuleManager($this))->createSotkDriver();
     }
 }

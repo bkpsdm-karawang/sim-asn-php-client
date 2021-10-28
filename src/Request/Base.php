@@ -43,7 +43,7 @@ abstract class Base extends Request
 
         $uri = $this->endpoint;
         if (count($query) > 0) {
-            $uri .= '?' . http_build_query($query);
+            $uri .= '?'.http_build_query($query);
         }
 
         parent::__construct(
@@ -84,7 +84,7 @@ abstract class Base extends Request
     }
 
     /**
-     * set endpoint
+     * set endpoint.
      */
     public function setEndpoint(array $endpoint): self
     {

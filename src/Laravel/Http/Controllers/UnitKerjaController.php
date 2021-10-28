@@ -10,7 +10,7 @@ use SIM_ASN\Laravel\Facades\AppClient;
 class UnitKerjaController extends Controller
 {
     /**
-     * module
+     * module.
      *
      * @var \SIM_ASN\Modules\UnitKerja
      */
@@ -35,6 +35,7 @@ class UnitKerjaController extends Controller
     {
         try {
             $data = $this->module->getDetail($id, $unitId);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -52,6 +53,7 @@ class UnitKerjaController extends Controller
     {
         try {
             $data = $this->module->getHierarki($id, $unitId);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -69,6 +71,7 @@ class UnitKerjaController extends Controller
     {
         try {
             $data = $this->module->getKartuIdentitas($id, $unitId);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -86,6 +89,7 @@ class UnitKerjaController extends Controller
     {
         try {
             $data = $this->module->getKontak($id, $unitId);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -103,6 +107,7 @@ class UnitKerjaController extends Controller
     {
         try {
             $data = $this->module->getAlamat($id, $unitId);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -120,6 +125,7 @@ class UnitKerjaController extends Controller
     {
         try {
             $data = $this->module->getKeluarga($id, $unitId);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);
@@ -137,6 +143,7 @@ class UnitKerjaController extends Controller
     {
         try {
             $data = $this->module->getPendidikan($id, $unitId);
+
             return new JsonResponse($data);
         } catch (ClientException $error) {
             return $this->handleClientException($error);

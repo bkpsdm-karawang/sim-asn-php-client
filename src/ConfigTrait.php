@@ -12,11 +12,11 @@ trait ConfigTrait
     public $localConfig = [];
 
     /**
-     * set configuration local
+     * set configuration local.
      */
     protected function configureLocal(array $localConfig = []): void
     {
-        $this->localConfig = require(__DIR__.'/config.php');
+        $this->localConfig = require __DIR__.'/config.php';
 
         if (count($localConfig) > 0) {
             $this->localConfig = array_merge($this->localConfig, $localConfig);

@@ -17,6 +17,6 @@ class User extends Client
      */
     protected $requests = [
         'getList' => \SIM_ASN\Request\User\Listing::class,
-        'getDetail' => \SIM_ASN\Request\User\Detail::class
+        'getDetail' => \SIM_ASN\Request\User\Detail::class,
     ];
 }

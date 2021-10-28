@@ -7,7 +7,7 @@ use SIM_ASN\Resource\AccessToken;
 abstract class BaseDetail extends Base
 {
     /**
-     * id key
+     * id key.
      */
     protected $idKey = '{id}';
 

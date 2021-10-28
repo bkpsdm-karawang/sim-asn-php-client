@@ -4,16 +4,16 @@ namespace SIM_ASN;
 
 use Illuminate\Support\Manager as BaseManager;
 use InvalidArgumentException;
-use SIM_ASN\AppClient;
 use SIM_ASN\Modules\Pegawai;
 use SIM_ASN\Modules\Skpd;
+use SIM_ASN\Modules\Sotk;
 use SIM_ASN\Modules\UnitKerja;
 use SIM_ASN\Modules\User;
 
 class ModuleManager extends BaseManager
 {
     /**
-     * app client
+     * app client.
      *
      * @var \SIM_ASN\AppClient
      */
@@ -25,7 +25,7 @@ class ModuleManager extends BaseManager
     }
 
     /**
-     * create module
+     * create module.
      */
     public function module($name)
     {
@@ -33,7 +33,7 @@ class ModuleManager extends BaseManager
     }
 
     /**
-     * create user driver
+     * create user driver.
      */
     public function createUserDriver(): User
     {
@@ -41,7 +41,7 @@ class ModuleManager extends BaseManager
     }
 
     /**
-     * create pegawai driver
+     * create pegawai driver.
      */
     public function createPegawaiDriver(): Pegawai
     {
@@ -49,7 +49,7 @@ class ModuleManager extends BaseManager
     }
 
     /**
-     * create skpd driver
+     * create skpd driver.
      */
     public function createSkpdDriver(): Skpd
     {
@@ -57,11 +57,19 @@ class ModuleManager extends BaseManager
     }
 
     /**
-     * create unit kerja driver
+     * create unit kerja driver.
      */
     public function createUnitKerjaDriver(): UnitKerja
     {
         return new UnitKerja($this->client->getAccessToken(), $this->client->localConfig);
+    }
+
+    /**
+     * create sotk driver.
+     */
+    public function createSotkDriver(): Sotk
+    {
+        return new Sotk($this->client->getAccessToken(), $this->client->localConfig);
     }
 
     /**

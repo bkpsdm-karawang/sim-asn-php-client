@@ -33,6 +33,7 @@ class RouteRegistrar
         $this->modulePegawai();
         $this->moduleUser();
         $this->moduleSkpd();
+        $this->moduleSotk();
     }
 
     /**
@@ -43,7 +44,7 @@ class RouteRegistrar
     public function modulePegawai()
     {
         $this->router->get('/pegawai', ['uses' => 'PegawaiController@getList', 'as' => 'sim-asn.pegawai.list']);
-        $this->router->group(['prefix' => '/pegawai/{id}'], function($router) {
+        $this->router->group(['prefix' => '/pegawai/{id}'], function ($router) {
             $router->get('/', ['uses' => 'PegawaiController@getDetail', 'as' => 'sim-asn.pegawai.detail']);
             $router->get('/hierarki', ['uses' => 'PegawaiController@getHierarki', 'as' => 'sim-asn.pegawai.hierarki']);
             $router->get('/kartu_identitas', ['uses' => 'PegawaiController@getKartuIdentitas', 'as' => 'sim-asn.pegawai.kartu_identitas']);
@@ -79,7 +80,7 @@ class RouteRegistrar
      */
     public function moduleSkpd()
     {
-        $this->router->group(['prefix' => '/skpd/{id}'], function($router) {
+        $this->router->group(['prefix' => '/skpd/{id}'], function ($router) {
             $router->get('/', ['uses' => 'SkpdController@getDetail', 'as' => 'sim-asn.skpd.detail']);
             $router->get('/hierarki', ['uses' => 'SkpdController@getHierarki', 'as' => 'sim-asn.skpd.hierarki']);
             $router->get('/kartu_identitas', ['uses' => 'SkpdController@getKartuIdentitas', 'as' => 'sim-asn.skpd.kartu_identitas']);
@@ -87,7 +88,7 @@ class RouteRegistrar
             $router->get('/alamat', ['uses' => 'SkpdController@getAlamat', 'as' => 'sim-asn.skpd.alamat']);
             $router->get('/keluarga', ['uses' => 'SkpdController@getKeluarga', 'as' => 'sim-asn.skpd.keluarga']);
             $router->get('/pendidikan', ['uses' => 'SkpdController@getPendidikan', 'as' => 'sim-asn.skpd.pendidikan']);
-            $router->group(['prefix' => '/unit_kerja/{unitId}'], function($router) {
+            $router->group(['prefix' => '/unit_kerja/{unitId}'], function ($router) {
                 $router->get('/', ['uses' => 'UnitKerjaController@getDetail', 'as' => 'sim-asn.unit_kerja.detail']);
                 $router->get('/hierarki', ['uses' => 'UnitKerjaController@getHierarki', 'as' => 'sim-asn.unit_kerja.hierarki']);
                 $router->get('/kartu_identitas', ['uses' => 'UnitKerjaController@getKartuIdentitas', 'as' => 'sim-asn.unit_kerja.kartu_identitas']);
@@ -97,6 +98,15 @@ class RouteRegistrar
                 $router->get('/pendidikan', ['uses' => 'UnitKerjaController@getPendidikan', 'as' => 'sim-asn.unit_kerja.pendidikan']);
             });
         });
+    }
 
+    /**
+     * Register the routes for module sotk.
+     *
+     * @return void
+     */
+    public function moduleSotk()
+    {
+        $this->router->get('/sotk/{url:.*}', ['uses' => 'SotkController@get', 'as' => 'sim-asn.sotk']);
     }
 }

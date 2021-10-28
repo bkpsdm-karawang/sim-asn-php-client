@@ -9,7 +9,7 @@ class Router
     use ConfigTrait;
 
     /**
-     * router
+     * router.
      */
     protected $router;
 
