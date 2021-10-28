@@ -1,6 +1,6 @@
 <?php
 
-namespace SIM_ASN\Request\Profile;
+namespace SIM_ASN\Request\Pegawai;
 
 use SIM_ASN\Request\Base;
 
