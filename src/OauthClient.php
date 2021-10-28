@@ -32,7 +32,7 @@ class OauthClient extends Client
     {
         try {
             $accessToken = $this->requestAccessToken($request->code);
-            $user = UserClient::setAccessToken($accessToken)->getProfile();
+            $user = UserClient::setAccessToken($accessToken)->getUser();
 
             if (isset($createToken) && is_callable($createToken)) {
                 $token = $createToken($user, $accessToken);

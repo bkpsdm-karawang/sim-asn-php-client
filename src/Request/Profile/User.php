@@ -1,11 +1,11 @@
 <?php
 
-namespace SIM_ASN\Request\User;
+namespace SIM_ASN\Request\Profile;
 
 use SIM_ASN\Request\Base;
-use SIM_ASN\Resource\User;
+use SIM_ASN\Resource\User as Model;
 
-class Profile extends Base
+class User extends Base
 {
     /**
      * endpoint for request.
@@ -19,6 +19,6 @@ class Profile extends Base
      */
     public function mapData(array $data)
     {
-        return new User($data);
+        return new Model($data);
     }
 }
