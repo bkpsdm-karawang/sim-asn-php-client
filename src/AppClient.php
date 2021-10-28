@@ -2,12 +2,14 @@
 
 namespace SIM_ASN;
 
+use GuzzleHttp\Psr7\Response;
 use SIM_ASN\Laravel\Facades\OauthClient;
 use SIM_ASN\Modules\Pegawai as PegawaiModule;
 use SIM_ASN\Modules\Skpd as SkpdModule;
 use SIM_ASN\Modules\Sotk as SotkModule;
 use SIM_ASN\Modules\UnitKerja as UnitKerjaModule;
 use SIM_ASN\Modules\User as UserModule;
+use SIM_ASN\Request\Base as BaseRequest;
 use SIM_ASN\Resource\AccessToken;
 
 class AppClient extends Client
@@ -31,12 +33,14 @@ class AppClient extends Client
     /**
      * generate app access token.
      */
-    protected function generateAccessToken(): ?AccessToken
+    protected function generateAccessToken(bool $force = false): ?AccessToken
     {
-        $accessToken = $this->getLocalToken();
+        if (!$force) {
+            $accessToken = $this->getLocalToken();
 
-        if ($accessToken) {
-            return $accessToken;
+            if ($accessToken) {
+                return $accessToken;
+            }
         }
 
         $accessToken = OauthClient::requestAppToken();
@@ -80,8 +84,10 @@ class AppClient extends Client
 
         if (file_exists($path)) {
             $data = file_get_contents($path);
-
-            return new AccessToken(json_decode($data, true));
+            $decoded = json_decode($data, null);
+            if (is_array($decoded) && $this->isValidToken($decoded)) {
+                return new AccessToken($decoded);
+            }
         }
 
         if (!$storage) {
@@ -89,6 +95,36 @@ class AppClient extends Client
         }
 
         return null;
+    }
+
+    /**
+     * check is token valid.
+     */
+    protected function isValidToken(array $accessToken)
+    {
+        return array_key_exists('token_type', $accessToken)
+            && array_key_exists('expires_in', $accessToken)
+            && array_key_exists('access_token', $accessToken);
+    }
+
+    /**
+     * handle client exception.
+     */
+    protected function handleException(int $status, $data, BaseRequest $request, Response $response)
+    {
+        if (!$this->retrying && 401 === $status) {
+            try {
+                $freshToken = $this->generateAccessToken(true);
+
+                if (!is_null($this->currentProcess)) {
+                    return $this->retryProcess($freshToken->access_token);
+                }
+            } catch (\Exception $error) {
+                return parent::handleException($status, $data, $request, $response);
+            }
+        }
+
+        return parent::handleException($status, $data, $request, $response);
     }
 
     /**

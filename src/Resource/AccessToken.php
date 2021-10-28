@@ -20,7 +20,11 @@ class AccessToken extends AbstractResource implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
-        return new static(json_decode($value, true));
+        if ($value) {
+            return new static(json_decode($value, true));
+        }
+
+        return null;
     }
 
     /**

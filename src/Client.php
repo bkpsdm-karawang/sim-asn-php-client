@@ -41,6 +41,12 @@ abstract class Client extends Guzzle
      * @var array
      */
     protected $currentProcess;
+    /**
+     * is retrying process flag.
+     *
+     * @var bool
+     */
+    protected $retrying = false;
 
     /**
      * constructor.
@@ -106,6 +112,8 @@ abstract class Client extends Guzzle
      */
     protected function retryProcess(AccessToken $accessToken)
     {
+        $this->retrying = true;
+
         $this->accessToken = $accessToken;
 
         return $this->__call(

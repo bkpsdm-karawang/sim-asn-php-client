@@ -51,7 +51,7 @@ class UserClient extends Client
      */
     protected function handleException(int $status, $data, BaseRequest $request, Response $response)
     {
-        if (401 === $status && $this->refreshableToken()) {
+        if (!$this->retrying && 401 === $status && $this->refreshableToken()) {
             try {
                 $freshToken = $this->accessToken->refresh();
                 $onSave = $this->onRefreshTokenHandler;
