@@ -2,8 +2,6 @@
 
 namespace SIM_ASN\Request\Profile;
 
-use SIM_ASN\Request\Base;
-
 class Alamat extends Base
 {
     /**

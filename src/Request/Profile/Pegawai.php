@@ -2,7 +2,6 @@
 
 namespace SIM_ASN\Request\Profile;
 
-use SIM_ASN\Request\Base;
 use SIM_ASN\Resource\Pegawai as Model;
 
 class Pegawai extends Base
@@ -15,9 +14,9 @@ class Pegawai extends Base
     protected $endpoint = '/api/me/pegawai';
 
     /**
-     * map data from sim-asn.
+     * map object from sim-asn.
      */
-    public function mapData(array $data)
+    public function mapObject(array $data)
     {
         return new Model($data);
     }

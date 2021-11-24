@@ -2,7 +2,6 @@
 
 namespace SIM_ASN\Request\Profile;
 
-use SIM_ASN\Request\Base;
 use SIM_ASN\Resource\User as Model;
 
 class User extends Base
@@ -15,9 +14,9 @@ class User extends Base
     protected $endpoint = '/api/me';
 
     /**
-     * map data from sim-asn.
+     * map object from sim-asn.
      */
-    public function mapData(array $data)
+    public function mapObject(array $data)
     {
         return new Model($data);
     }
