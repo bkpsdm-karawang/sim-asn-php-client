@@ -3,7 +3,7 @@
 namespace SIM_ASN\Modules;
 
 use SIM_ASN\Client;
-use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Models\AccessToken;
 
 /**
  * @method mixed getRequest($url, array $query = [])

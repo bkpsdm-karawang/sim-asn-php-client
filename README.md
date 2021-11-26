@@ -38,7 +38,7 @@ We recomend add two field to user table
 Add refresh token handler in boot of `AppServiceProvider.php`
 ```php
     use SIM_ASN\Laravel\Facades\UserClient;
-    use SIM_ASN\Resource\AccessToken;
+    use SIM_ASN\Models\AccessToken;
     ...
     /**
      * Register any application services.
@@ -65,8 +65,8 @@ Add refresh token handler in boot of `AppServiceProvider.php`
 Create callback handler route
 ```php
     use SIM_ASN\Laravel\Facades\OauthClient;
-    use SIM_ASN\Resource\AccessToken;
-    use SIM_ASN\Resource\User as UserSimASN;
+    use SIM_ASN\Models\AccessToken;
+    use SIM_ASN\Models\User as UserSimASN;
 
     /**
      * callback sim-asn

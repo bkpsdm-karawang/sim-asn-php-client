@@ -5,21 +5,21 @@ namespace SIM_ASN\Modules;
 use SIM_ASN\Client;
 
 /**
- * @method mixed getList(array $query = [])
- * @method mixed getDetail($id)
- * @method mixed getHierarki($id)
- * @method mixed getKartuIdentitas($id)
- * @method mixed getKontak($id)
- * @method mixed getAlamat($id)
- * @method mixed getKeluarga($id)
- * @method mixed getRiwayatKeluarga($id)
- * @method mixed getRiwayatGolongan($id)
- * @method mixed getRiwayatJabatan($id)
- * @method mixed getRiwayatPendidikan($id)
- * @method mixed getRiwayatDiklat($id)
- * @method mixed getRiwayatPelanggaran($id)
- * @method mixed getDokumen($id)
- * @method mixed getFile($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getList(array $query = [])
+ * @method \SIM_ASN\Models\Pegawai getDetail($id)
+ * @method \SIM_ASN\Models\Hierarki getHierarki($id)
+ * @method \Illuminate\Support\Collection getKartuIdentitas($id)
+ * @method \Illuminate\Support\Collection getKontak($id)
+ * @method \Illuminate\Support\Collection getAlamat($id)
+ * @method \Illuminate\Support\Collection getKeluarga($id)
+ * @method \Illuminate\Support\Collection getRiwayatKeluarga($id)
+ * @method \Illuminate\Support\Collection getRiwayatGolongan($id)
+ * @method \Illuminate\Support\Collection getRiwayatJabatan($id)
+ * @method \Illuminate\Support\Collection getRiwayatPendidikan($id)
+ * @method \Illuminate\Support\Collection getRiwayatDiklat($id)
+ * @method \Illuminate\Support\Collection getRiwayatPelanggaran($id)
+ * @method \Illuminate\Support\Collection getDokumen($id)
+ * @method \Illuminate\Support\Collection getFile($id)
  */
 class Pegawai extends Client
 {

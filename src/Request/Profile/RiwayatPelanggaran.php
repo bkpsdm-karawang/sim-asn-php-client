@@ -2,8 +2,18 @@
 
 namespace SIM_ASN\Request\Profile;
 
-class RiwayatPelanggaran extends Base
+use SIM_ASN\Models\Pelanggaran as Model;
+use SIM_ASN\Request\BaseListing;
+
+class RiwayatPelanggaran extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Model::class;
+
     /**
      * endpoint for request.
      *

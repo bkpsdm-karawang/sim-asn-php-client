@@ -8,7 +8,8 @@ use GuzzleHttp\Psr7\Response;
 use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
 use SIM_ASN\Request\Base as BaseRequest;
-use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Request\TransformInterface;
+use SIM_ASN\Models\AccessToken;
 
 abstract class Client extends Guzzle
 {

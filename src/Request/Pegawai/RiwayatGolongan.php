@@ -2,10 +2,17 @@
 
 namespace SIM_ASN\Request\Pegawai;
 
-use SIM_ASN\Request\BaseDetail;
+use SIM_ASN\Models\Golongan;
 
-class RiwayatGolongan extends BaseDetail
+class RiwayatGolongan extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Golongan::class;
+
     /**
      * endpoint for request.
      *

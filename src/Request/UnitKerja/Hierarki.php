@@ -2,8 +2,17 @@
 
 namespace SIM_ASN\Request\UnitKerja;
 
-class Hierarki extends BaseDetail
+use SIM_ASN\Models\Jabatan;
+
+class Hierarki extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Jabatan::class;
+
     /**
      * endpoint for request.
      *

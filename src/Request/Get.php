@@ -2,7 +2,7 @@
 
 namespace SIM_ASN\Request;
 
-use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Models\AccessToken;
 
 class Get extends Base
 {

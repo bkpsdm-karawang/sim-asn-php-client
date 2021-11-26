@@ -2,8 +2,17 @@
 
 namespace SIM_ASN\Request\UnitKerja;
 
-class Pendidikan extends BaseDetail
+use SIM_ASN\Models\Pegawai;
+
+class Pendidikan extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Pegawai::class;
+
     /**
      * endpoint for request.
      *

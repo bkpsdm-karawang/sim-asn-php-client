@@ -2,8 +2,18 @@
 
 namespace SIM_ASN\Request\Profile;
 
-class RiwayatPendidikan extends Base
+use SIM_ASN\Models\Pendidikan;
+use SIM_ASN\Request\BaseListing;
+
+class RiwayatPendidikan extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Pendidikan::class;
+
     /**
      * endpoint for request.
      *

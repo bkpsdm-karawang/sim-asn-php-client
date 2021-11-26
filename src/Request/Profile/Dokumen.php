@@ -2,8 +2,18 @@
 
 namespace SIM_ASN\Request\Profile;
 
-class Dokumen extends Base
+use SIM_ASN\Models\Dokumen as Model;
+use SIM_ASN\Request\BaseListing;
+
+class Dokumen extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Model::class;
+
     /**
      * endpoint for request.
      *

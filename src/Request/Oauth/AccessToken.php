@@ -4,7 +4,7 @@ namespace SIM_ASN\Request\Oauth;
 
 use GuzzleHttp\Utils;
 use SIM_ASN\Request\Base;
-use SIM_ASN\Resource\AccessToken as Model;
+use SIM_ASN\Models\AccessToken as Model;
 
 class AccessToken extends Base
 {

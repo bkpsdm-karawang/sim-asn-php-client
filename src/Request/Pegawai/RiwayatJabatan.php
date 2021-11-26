@@ -2,10 +2,17 @@
 
 namespace SIM_ASN\Request\Pegawai;
 
-use SIM_ASN\Request\BaseDetail;
+use SIM_ASN\Models\Jabatan;
 
-class RiwayatJabatan extends BaseDetail
+class RiwayatJabatan extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Jabatan::class;
+
     /**
      * endpoint for request.
      *

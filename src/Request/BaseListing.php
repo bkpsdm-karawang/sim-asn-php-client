@@ -4,7 +4,7 @@ namespace SIM_ASN\Request;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Models\AccessToken;
 
 abstract class BaseListing extends Base
 {
@@ -22,10 +22,9 @@ abstract class BaseListing extends Base
     public function mapData(array $data)
     {
         if (isset($data['data']) && isset($data['pagination'])) {
-            $collection = new Collection();
-            foreach ($data['data'] as $d) {
-                $collection->push($this->mapObject($d));
-            }
+            $collection = new Collection(array_map(function($d) {
+                return $this->createModel($d);
+            }, $data['data']));
 
             extract($data['pagination']);
 
@@ -34,6 +33,14 @@ abstract class BaseListing extends Base
             ]);
         }
 
-        return $data;
+        if (isset($data['data'])) {
+            return new Collection(array_map(function($d) {
+                return $this->createModel($d);
+            }, $data['data']));
+        }
+
+        return new Collection(array_map(function($d) {
+            return $this->createModel($d);
+        }, $data));
     }
 }

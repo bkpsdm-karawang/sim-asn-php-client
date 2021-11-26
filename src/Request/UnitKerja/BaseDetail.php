@@ -3,7 +3,7 @@
 namespace SIM_ASN\Request\UnitKerja;
 
 use SIM_ASN\Request\Base;
-use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Models\AccessToken;
 
 abstract class BaseDetail extends Base
 {
@@ -26,5 +26,13 @@ abstract class BaseDetail extends Base
         $this->endpoint = str_replace($this->idKey, $id, $this->endpoint);
 
         parent::__construct($localConfig, $accessToken);
+    }
+
+    /**
+     * map data from sim-asn.
+     */
+    public function mapData(array $data)
+    {
+        return $this->createModel($data['data']);
     }
 }

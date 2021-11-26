@@ -5,11 +5,18 @@ namespace SIM_ASN\Request;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Utils;
 use SIM_ASN\ConfigTrait;
-use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Models\AccessToken;
 
 abstract class Base extends Request
 {
     use ConfigTrait;
+
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model;
 
     /**
      * Access token.
@@ -98,14 +105,18 @@ abstract class Base extends Request
      */
     public function mapData(array $data)
     {
-        return $this->mapObject($data);
+        return $this->createModel($data);
     }
 
     /**
      * map object from sim-asn.
      */
-    public function mapObject(array $data)
+    protected function createModel(array $data)
     {
+        if ($this->model) {
+            return new $this->model($data);
+        }
+
         return $data;
     }
 }

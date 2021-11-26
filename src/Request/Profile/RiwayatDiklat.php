@@ -2,8 +2,18 @@
 
 namespace SIM_ASN\Request\Profile;
 
-class RiwayatDiklat extends Base
+use SIM_ASN\Models\Diklat;
+use SIM_ASN\Request\BaseListing;
+
+class RiwayatDiklat extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Diklat::class;
+
     /**
      * endpoint for request.
      *

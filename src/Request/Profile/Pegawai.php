@@ -2,10 +2,18 @@
 
 namespace SIM_ASN\Request\Profile;
 
-use SIM_ASN\Resource\Pegawai as Model;
+use SIM_ASN\Models\Pegawai as Model;
+use SIM_ASN\Request\Base;
 
 class Pegawai extends Base
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Model::class;
+
     /**
      * endpoint for request.
      *
@@ -14,10 +22,10 @@ class Pegawai extends Base
     protected $endpoint = '/api/me/pegawai';
 
     /**
-     * map object from sim-asn.
+     * map data from sim-asn.
      */
-    public function mapObject(array $data)
+    public function mapData(array $data)
     {
-        return new Model($data);
+        return $this->createModel($data['data']);
     }
 }

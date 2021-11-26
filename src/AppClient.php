@@ -10,7 +10,7 @@ use SIM_ASN\Modules\Sotk as SotkModule;
 use SIM_ASN\Modules\UnitKerja as UnitKerjaModule;
 use SIM_ASN\Modules\User as UserModule;
 use SIM_ASN\Request\Base as BaseRequest;
-use SIM_ASN\Resource\AccessToken;
+use SIM_ASN\Models\AccessToken;
 
 class AppClient extends Client
 {

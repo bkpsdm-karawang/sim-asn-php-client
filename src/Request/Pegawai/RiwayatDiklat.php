@@ -2,10 +2,17 @@
 
 namespace SIM_ASN\Request\Pegawai;
 
-use SIM_ASN\Request\BaseDetail;
+use SIM_ASN\Models\Diklat;
 
-class RiwayatDiklat extends BaseDetail
+class RiwayatDiklat extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Diklat::class;
+
     /**
      * endpoint for request.
      *

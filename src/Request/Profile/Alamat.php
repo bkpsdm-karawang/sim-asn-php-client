@@ -2,8 +2,18 @@
 
 namespace SIM_ASN\Request\Profile;
 
-class Alamat extends Base
+use SIM_ASN\Models\Alamat as Model;
+use SIM_ASN\Request\BaseListing;
+
+class Alamat extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Model::class;
+
     /**
      * endpoint for request.
      *

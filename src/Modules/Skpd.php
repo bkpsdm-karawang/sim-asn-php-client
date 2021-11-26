@@ -5,13 +5,13 @@ namespace SIM_ASN\Modules;
 use SIM_ASN\Client;
 
 /**
- * @method mixed getDetail($id)
- * @method mixed getHierarki($id)
- * @method mixed getKartuIdentitas($id)
- * @method mixed getKontak($id)
- * @method mixed getAlamat($id)
- * @method mixed getKeluarga($id)
- * @method mixed getPendidikan($id)
+ * @method \SIM_ASN\Models\Skpd getDetail($id)
+ * @method \Illuminate\Support\Collection getHierarki($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKartuIdentitas($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKontak($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getAlamat($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKeluarga($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getPendidikan($id)
  */
 class Skpd extends Client
 {

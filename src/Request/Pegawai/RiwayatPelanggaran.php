@@ -2,10 +2,17 @@
 
 namespace SIM_ASN\Request\Pegawai;
 
-use SIM_ASN\Request\BaseDetail;
+use SIM_ASN\Models\Pelanggaran;
 
-class RiwayatPelanggaran extends BaseDetail
+class RiwayatPelanggaran extends BaseListing
 {
+    /**
+     * Access token.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = Pelanggaran::class;
+
     /**
      * endpoint for request.
      *

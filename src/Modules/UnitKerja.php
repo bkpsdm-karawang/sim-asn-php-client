@@ -5,13 +5,13 @@ namespace SIM_ASN\Modules;
 use SIM_ASN\Client;
 
 /**
- * @method mixed getDetail($idSkpd, $id)
- * @method mixed getHierarki($idSkpd, $id)
- * @method mixed getKartuIdentitas($idSkpd, $id)
- * @method mixed getKontak($idSkpd, $id)
- * @method mixed getAlamat($idSkpd, $id)
- * @method mixed getKeluarga($idSkpd, $id)
- * @method mixed getPendidikan($idSkpd, $id)
+ * @method \SIM_ASN\Models\UnitKerja getDetail($idSkpd, $id)
+ * @method \Illuminate\Support\Collection getHierarki($idSkpd, $id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKartuIdentitas($idSkpd, $id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKontak($idSkpd, $id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getAlamat($idSkpd, $id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKeluarga($idSkpd, $id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getPendidikan($idSkpd, $id)
  */
 class UnitKerja extends Client
 {

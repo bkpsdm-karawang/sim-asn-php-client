@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Facade;
 use SIM_ASN\OauthClient as Concret;
 
 /**
- * @method static \SIM_ASN\Resource\AccessToken requestAccessToken(string $code = null)
- * @method static \SIM_ASN\Resource\AccessToken requestRefreshTokenToken(string $refreshToken = null)
- * @method static \SIM_ASN\Resource\AccessToken requestAppToken()
+ * @method static \SIM_ASN\Models\AccessToken requestAccessToken(string $code = null)
+ * @method static \SIM_ASN\Models\AccessToken requestRefreshTokenToken(string $refreshToken = null)
+ * @method static \SIM_ASN\Models\AccessToken requestAppToken()
  * @method static \Illuminate\Http\RedirectResponse handleCallback(\Illuminate\Http\Request $request, \Clousure $createToken = null)
  */
 class OauthClient extends Facade
