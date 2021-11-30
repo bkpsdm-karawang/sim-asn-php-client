@@ -4,9 +4,8 @@ namespace SIM_ASN\Laravel\Http\Controllers;
 
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller as BaseController;
 
-class Controller extends BaseController
+abstract class Controller
 {
     /**
      * handle exception from sim-asn.
