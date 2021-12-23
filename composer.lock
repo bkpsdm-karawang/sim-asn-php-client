@@ -4,8 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45fa4d5024988b88333bae84f68934d5",
+    "content-hash": "c801f22ab021acd4d9ecbbf1922dbe90",
     "packages": [
+        {
+            "name": "denmasyarikin/laravel-api-pagination",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/denmasyarikin/laravel-api-pagination.git",
+                "reference": "def8f850f1db4bf14108e97e92356af72e3a0823"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/denmasyarikin/laravel-api-pagination/zipball/def8f850f1db4bf14108e97e92356af72e3a0823",
+                "reference": "def8f850f1db4bf14108e97e92356af72e3a0823",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ElemenX\\ApiPagination\\PaginationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ElemenX\\ApiPagination\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "BranchZero Sun",
+                    "email": "branchzero@gmail.com"
+                }
+            ],
+            "description": "API Pagination For Laravel & Lumen",
+            "keywords": [
+                "api",
+                "elemenx",
+                "laravel",
+                "lumen",
+                "pagination"
+            ],
+            "support": {
+                "source": "https://github.com/denmasyarikin/laravel-api-pagination/tree/0.1.8"
+            },
+            "time": "2021-12-23T04:01:40+00:00"
+        },
         {
             "name": "doctrine/inflector",
             "version": "2.1.x-dev",
@@ -3406,7 +3460,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "denmasyarikin/laravel-api-pagination": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

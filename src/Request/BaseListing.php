@@ -2,7 +2,7 @@
 
 namespace SIM_ASN\Request;
 
-use Illuminate\Pagination\LengthAwarePaginator;
+use ElemenX\ApiPagination\Bridges\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use SIM_ASN\Models\AccessToken;
 
@@ -28,9 +28,7 @@ abstract class BaseListing extends Base
 
             extract($data['pagination']);
 
-            return new LengthAwarePaginator($collection, $total, $limit, $page, [
-                'path' => $this->endpoint,
-            ]);
+            return new LengthAwarePaginator($collection, $total, $limit, $page);
         }
 
         if (isset($data['data'])) {

@@ -5,7 +5,7 @@ namespace SIM_ASN\Modules;
 use SIM_ASN\Client;
 
 /**
- * @method \Illuminate\Pagination\LengthAwarePaginator getList(array $query = [])
+ * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getList(array $query = [])
  * @method \SIM_ASN\Models\Pegawai getDetail($id)
  * @method \SIM_ASN\Models\Hierarki getHierarki($id)
  * @method \Illuminate\Support\Collection getKartuIdentitas($id)

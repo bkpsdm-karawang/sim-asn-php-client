@@ -7,11 +7,11 @@ use SIM_ASN\Client;
 /**
  * @method \SIM_ASN\Models\UnitKerja getDetail($idSkpd, $id)
  * @method \Illuminate\Support\Collection getHierarki($idSkpd, $id)
- * @method \Illuminate\Pagination\LengthAwarePaginator getKartuIdentitas($idSkpd, $id)
- * @method \Illuminate\Pagination\LengthAwarePaginator getKontak($idSkpd, $id)
- * @method \Illuminate\Pagination\LengthAwarePaginator getAlamat($idSkpd, $id)
- * @method \Illuminate\Pagination\LengthAwarePaginator getKeluarga($idSkpd, $id)
- * @method \Illuminate\Pagination\LengthAwarePaginator getPendidikan($idSkpd, $id)
+ * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getKartuIdentitas($idSkpd, $id)
+ * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getKontak($idSkpd, $id)
+ * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getAlamat($idSkpd, $id)
+ * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getKeluarga($idSkpd, $id)
+ * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getPendidikan($idSkpd, $id)
  */
 class UnitKerja extends Client
 {
