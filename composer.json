@@ -1,7 +1,7 @@
 {
     "name": "bkpsdm-karawang/sim-asn-php-client",
     "description": "PHP Client for SIM-ASN Service BKPSDM Karawang",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "type": "library",
     "keywords": [
         "sim asn",
@@ -28,7 +28,7 @@
         "illuminate/http": "^8.5",
         "illuminate/pagination": "^8.5",
         "illuminate/database": "^8.5",
-        "denmasyarikin/laravel-api-pagination": "dev-master"
+        "denmasyarikin/laravel-api-pagination": "^0.1"
     },
     "suggest": {
         "laravel/framework": "^8.5"
