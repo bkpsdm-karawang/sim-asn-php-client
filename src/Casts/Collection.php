@@ -66,6 +66,6 @@ class Collection implements CastsAttributes
            return json_encode($value);
         }
 
-        return null;
+        return json_encode([]);
     }
 }
