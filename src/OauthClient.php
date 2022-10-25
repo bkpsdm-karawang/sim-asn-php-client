@@ -30,6 +30,10 @@ class OauthClient extends Client
      */
     public function handleCallback(Request $request, Closure $createToken = null)
     {
+        if ($request->has('error')) {
+            return $this->redirect($request->state, 'error', $request->query('error'));
+        }
+
         try {
             $accessToken = $this->requestAccessToken($request->code);
             $user = UserClient::setAccessToken($accessToken)->getUser();
