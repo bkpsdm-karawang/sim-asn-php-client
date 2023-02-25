@@ -28,6 +28,26 @@ class OauthClient extends Client
      *
      * @return RedirectResponse|array
      */
+    public function requestCode($state = 'login')
+    {
+        $url = $this->localConfig['frontend_url'].'/oauth/authorize';
+
+        $query = [
+            'client_id' => $this->localConfig['client_id'],
+            'redirect_uri' => $this->localConfig['user_callback'],
+            'response_type' => 'code',
+            'scope' => $this->localConfig['user_scope'],
+            'state' => $state
+        ];
+
+        return new RedirectResponse($url.'?'.http_build_query($query));
+    }
+
+    /**
+     * handle callback with redirect.
+     *
+     * @return RedirectResponse|array
+     */
     public function handleCallback(Request $request, Closure $createToken = null)
     {
         if ($request->has('error')) {
@@ -57,7 +77,7 @@ class OauthClient extends Client
     /**
      * redirect to frontend after login or connect simpeg.
      */
-    protected function redirect($state = 'login', string $key, string $message): RedirectResponse
+    protected function redirect($state = 'login', string $key, string $message='No message'): RedirectResponse
     {
         $redirects = $this->localConfig['user_redirect_state'];
 

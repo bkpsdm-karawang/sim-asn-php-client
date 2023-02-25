@@ -8,6 +8,7 @@ return [
     | Serever and services
     */
     'url' => Env::get('SIM_ASN_URL', 'https://api.sim-asn.bkpsdm.karawangkab.go.id'),
+    'frontend_url' => Env::get('SIM_ASN_FRONTEND_URL', 'https://sim-asn.bkpsdm.karawangkab.go.id'),
     'client_id' => Env::get('SIM_ASN_CLIENT_ID'),
     'client_secret' => Env::get('SIM_ASN_CLIENT_SECRET'),
 
