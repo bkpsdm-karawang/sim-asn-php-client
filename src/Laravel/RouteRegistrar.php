@@ -107,6 +107,6 @@ class RouteRegistrar
      */
     public function moduleSotk()
     {
-        $this->router->get('/sotk/{url}', ['uses' => 'SotkController@get', 'as' => 'sim-asn.sotk'])->where('url', '.*');
+        $this->router->get('/sotk/{url:.*}', ['uses' => 'SotkController@get', 'as' => 'sim-asn.sotk']);
     }
 }
