@@ -34,6 +34,9 @@ class UserClient extends Client
         'getRiwayatPendidikan' => \SIM_ASN\Request\Profile\RiwayatPendidikan::class,
         'getRiwayatDiklat' => \SIM_ASN\Request\Profile\RiwayatDiklat::class,
         'getRiwayatPelanggaran' => \SIM_ASN\Request\Profile\RiwayatPelanggaran::class,
+        'getRiwayatSertifikasi' => \SIM_ASN\Request\Profile\RiwayatSertifikasi::class,
+        'getRiwayatLhk' => \SIM_ASN\Request\Profile\RiwayatLhk::class,
+        'getRiwayatSkp' => \SIM_ASN\Request\Profile\RiwayatSkp::class,
         'getDokumen' => \SIM_ASN\Request\Profile\Dokumen::class,
         'getFile' => \SIM_ASN\Request\Profile\File::class,
     ];

@@ -42,6 +42,9 @@ class Pegawai extends Client
         'getRiwayatPendidikan' => \SIM_ASN\Request\Pegawai\RiwayatPendidikan::class,
         'getRiwayatDiklat' => \SIM_ASN\Request\Pegawai\RiwayatDiklat::class,
         'getRiwayatPelanggaran' => \SIM_ASN\Request\Pegawai\RiwayatPelanggaran::class,
+        'getRiwayatSertifikasi' => \SIM_ASN\Request\Pegawai\RiwayatSertifikasi::class,
+        'getRiwayatLhk' => \SIM_ASN\Request\Pegawai\RiwayatLhk::class,
+        'getRiwayatSkp' => \SIM_ASN\Request\Pegawai\RiwayatSkp::class,
         'getDokumen' => \SIM_ASN\Request\Pegawai\Dokumen::class,
         'getFile' => \SIM_ASN\Request\Pegawai\File::class,
     ];
