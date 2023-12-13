@@ -2,6 +2,8 @@
 
 namespace SIM_ASN\Models;
 
+use SIM_ASN\Models\Ref\Jabatan;
+
 class Hierarki extends Base
 {
     /**
