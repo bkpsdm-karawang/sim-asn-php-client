@@ -14,11 +14,11 @@ abstract class BaseDetail extends Base
     /**
      * constructor.
      */
-    public function __construct(array $localConfig = [], AccessToken $accessToken = null, $identifier, array $query = [])
+    public function __construct(?AccessToken $accessToken = null, $identifier, array $query = [])
     {
         $this->endpoint = str_replace($this->idKey, $identifier, $this->endpoint);
 
-        parent::__construct($localConfig, $accessToken, null, $query);
+        parent::__construct($accessToken, null, $query);
     }
 
     /**

@@ -5,13 +5,16 @@ namespace SIM_ASN\Models;
 class Pelanggaran extends Base
 {
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array
+     * @return array<string, string>
      */
-    protected $casts = [
-        'dokumen' => Dokumen::class,
-        'user' => User::class,
-        'vonis' => VonisHukuman::class
-    ];
+    protected function casts(): array
+    {
+        return [
+            'dokumen' => Dokumen::class,
+            'user' => User::class,
+            'vonis' => VonisHukuman::class,
+        ];
+    }
 }

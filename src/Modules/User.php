@@ -5,8 +5,8 @@ namespace SIM_ASN\Modules;
 use SIM_ASN\Client;
 
 /**
- * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getList(array $query = [])
- * @method \SIM_ASN\Models\User getDetail($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getList(array $query = [])
+ * @method \SIM_ASN\Models\User                        getDetail($id)
  */
 class User extends Client
 {

@@ -27,8 +27,6 @@ class SkpdController extends Controller
     /**
      * get detail.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getDetail(Request $request, $id)
@@ -44,8 +42,6 @@ class SkpdController extends Controller
 
     /**
      * get hierarki.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -63,8 +59,6 @@ class SkpdController extends Controller
     /**
      * get kartu identitas.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getKartuIdentitas(Request $request, $id)
@@ -80,8 +74,6 @@ class SkpdController extends Controller
 
     /**
      * get kontak.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -99,8 +91,6 @@ class SkpdController extends Controller
     /**
      * get alamat.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getAlamat(Request $request, $id)
@@ -117,8 +107,6 @@ class SkpdController extends Controller
     /**
      * get keluarga.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getKeluarga(Request $request, $id)
@@ -134,8 +122,6 @@ class SkpdController extends Controller
 
     /**
      * get pendidikan.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */

@@ -2,8 +2,8 @@
 
 namespace SIM_ASN\Request\User;
 
-use SIM_ASN\Request\BaseDetail;
 use SIM_ASN\Models\User;
+use SIM_ASN\Request\BaseDetail;
 
 class Detail extends BaseDetail
 {

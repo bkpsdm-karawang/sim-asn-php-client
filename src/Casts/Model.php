@@ -2,8 +2,8 @@
 
 namespace SIM_ASN\Casts;
 
-use Illuminate\Database\Eloquent\Model as IlMo;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Database\Eloquent\Model as IlMo;
 
 class Model implements CastsAttributes
 {
@@ -17,7 +17,8 @@ class Model implements CastsAttributes
     /**
      * Create a new cast class instance.
      *
-     * @param  string|null  $model
+     * @param string|null $model
+     *
      * @return void
      */
     public function __construct($model)
@@ -28,11 +29,7 @@ class Model implements CastsAttributes
     /**
      * Transform the attribute from the underlying model values.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  array  $attributes
-     * @return mixed
+     * @param IlMo $model
      */
     public function get($model, string $key, $value, array $attributes)
     {
@@ -46,11 +43,7 @@ class Model implements CastsAttributes
     /**
      * Transform the attribute to its underlying model values.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  array  $attributes
-     * @return mixed
+     * @param IlMo $model
      */
     public function set($model, string $key, $value, array $attributes)
     {
@@ -59,7 +52,7 @@ class Model implements CastsAttributes
                 $value = $value->toArray();
             }
 
-           return json_encode($value);
+            return json_encode($value);
         }
 
         return null;

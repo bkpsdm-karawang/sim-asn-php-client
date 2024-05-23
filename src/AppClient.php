@@ -4,30 +4,27 @@ namespace SIM_ASN;
 
 use GuzzleHttp\Psr7\Response;
 use SIM_ASN\Laravel\Facades\OauthClient;
+use SIM_ASN\Laravel\ServiceProvider;
+use SIM_ASN\Models\AccessToken;
 use SIM_ASN\Modules\Pegawai as PegawaiModule;
 use SIM_ASN\Modules\Skpd as SkpdModule;
 use SIM_ASN\Modules\Sotk as SotkModule;
 use SIM_ASN\Modules\UnitKerja as UnitKerjaModule;
 use SIM_ASN\Modules\User as UserModule;
 use SIM_ASN\Request\Base as BaseRequest;
-use SIM_ASN\Models\AccessToken;
 
 class AppClient extends Client
 {
     /**
      * constructor.
      *
-     * @param ClientInterface $client
-     *
      * @return void
      */
-    public function __construct(AccessToken $accessToken = null, array $localConfig = [])
+    public function __construct(?AccessToken $accessToken = null)
     {
-        $this->configureLocal($localConfig);
-
         $accessToken = $this->generateAccessToken();
 
-        parent::__construct($accessToken, $localConfig);
+        parent::__construct($accessToken);
     }
 
     /**
@@ -44,7 +41,7 @@ class AppClient extends Client
         }
 
         $accessToken = OauthClient::requestAppToken();
-        $path = $this->localConfig['app_token_path'];
+        $path = ServiceProvider::config('app_token_path');
 
         $this->saveAccessToken($path, $accessToken);
 
@@ -76,7 +73,7 @@ class AppClient extends Client
      */
     protected function getLocalToken(bool $storage = false): ?AccessToken
     {
-        $path = $this->localConfig['app_token_path'];
+        $path = ServiceProvider::config('app_token_path');
 
         if ($storage && function_exists('storage_path')) {
             $path = storage_path($path);

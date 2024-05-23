@@ -2,8 +2,8 @@
 
 namespace SIM_ASN\Request\UnitKerja;
 
-use SIM_ASN\Request\Base;
 use SIM_ASN\Models\AccessToken;
+use SIM_ASN\Request\Base;
 
 abstract class BaseDetail extends Base
 {
@@ -20,12 +20,12 @@ abstract class BaseDetail extends Base
     /**
      * constructor.
      */
-    public function __construct(array $localConfig = [], AccessToken $accessToken = null, $idSKpd, $id)
+    public function __construct(?AccessToken $accessToken = null, $idSKpd, $id)
     {
         $this->endpoint = str_replace($this->idSkpdKey, $idSKpd, $this->endpoint);
         $this->endpoint = str_replace($this->idKey, $id, $this->endpoint);
 
-        parent::__construct($localConfig, $accessToken);
+        parent::__construct($accessToken);
     }
 
     /**

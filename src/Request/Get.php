@@ -9,10 +9,10 @@ class Get extends Base
     /**
      * constructor.
      */
-    public function __construct(array $localConfig = [], AccessToken $accessToken = null, $url = null, array $query = [])
+    public function __construct(?AccessToken $accessToken = null, $url = null, array $query = [])
     {
         $this->endpoint = $url;
 
-        parent::__construct($localConfig, $accessToken, null, $query);
+        parent::__construct($accessToken, null, $query);
     }
 }

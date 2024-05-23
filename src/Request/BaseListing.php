@@ -2,7 +2,7 @@
 
 namespace SIM_ASN\Request;
 
-use ElemenX\ApiPagination\Bridges\LengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use SIM_ASN\Models\AccessToken;
 
@@ -11,9 +11,9 @@ abstract class BaseListing extends Base
     /**
      * constructor.
      */
-    public function __construct(array $localConfig = [], AccessToken $accessToken = null, array $query = [])
+    public function __construct(?AccessToken $accessToken = null, array $query = [])
     {
-        parent::__construct($localConfig, $accessToken, null, $query);
+        parent::__construct($accessToken, null, $query);
     }
 
     /**
@@ -22,7 +22,7 @@ abstract class BaseListing extends Base
     public function mapData(array $data)
     {
         if (isset($data['data']) && isset($data['pagination'])) {
-            $collection = new Collection(array_map(function($d) {
+            $collection = new Collection(array_map(function ($d) {
                 return $this->createModel($d);
             }, $data['data']));
 
@@ -32,12 +32,12 @@ abstract class BaseListing extends Base
         }
 
         if (isset($data['data'])) {
-            return new Collection(array_map(function($d) {
+            return new Collection(array_map(function ($d) {
                 return $this->createModel($d);
             }, $data['data']));
         }
 
-        return new Collection(array_map(function($d) {
+        return new Collection(array_map(function ($d) {
             return $this->createModel($d);
         }, $data));
     }

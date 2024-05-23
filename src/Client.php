@@ -5,16 +5,13 @@ namespace SIM_ASN;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Response;
-use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
-use SIM_ASN\Request\Base as BaseRequest;
-use SIM_ASN\Request\TransformInterface;
+use SIM_ASN\Laravel\ServiceProvider;
 use SIM_ASN\Models\AccessToken;
+use SIM_ASN\Request\Base as BaseRequest;
 
 abstract class Client extends Guzzle
 {
-    use ConfigTrait;
-
     /**
      * client configruation.
      *
@@ -52,19 +49,16 @@ abstract class Client extends Guzzle
     /**
      * constructor.
      *
-     * @param ClientInterface $client
-     *
      * @return void
      */
-    public function __construct(AccessToken $accessToken = null, array $localConfig = [])
+    public function __construct(?AccessToken $accessToken = null, ?string $uri = null)
     {
-        $this->configureLocal($localConfig);
-
+        $uri = $uri ?? config(ServiceProvider::CONFIG_KEY.'.url');
         $this->accessToken = $accessToken;
 
         $config = [
-            'verify' => false,
-            'base_uri' => $this->localConfig['url'],
+            'verify' => 'production' === env('APP_ENV'),
+            'base_uri' => $uri,
         ];
 
         parent::__construct($config);
@@ -175,7 +169,6 @@ abstract class Client extends Guzzle
             $method = $this->requests[$method];
 
             $request = new $method(
-                $this->localConfig,
                 $this->accessToken,
                 ...$args
             );
@@ -183,6 +176,6 @@ abstract class Client extends Guzzle
             return $this->process($request);
         }
 
-        throw new InvalidArgumentException("Method ${$method} undefined");
+        throw new \InvalidArgumentException("Method {$method} undefined");
     }
 }

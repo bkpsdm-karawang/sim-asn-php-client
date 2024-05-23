@@ -2,12 +2,8 @@
 
 namespace SIM_ASN\Laravel;
 
-use SIM_ASN\ConfigTrait;
-
 class Router
 {
-    use ConfigTrait;
-
     /**
      * router.
      */
@@ -18,10 +14,9 @@ class Router
      *
      * @return void
      */
-    public function __construct($router, array $localConfig = [])
+    public function __construct($router)
     {
         $this->router = $router;
-        $this->configureLocal($localConfig);
     }
 
     /**
@@ -37,19 +32,11 @@ class Router
             $router->all();
         };
 
-        $routeOptions = [
+        $options = array_merge([
             'namespace' => '\SIM_ASN\Laravel\Http\Controllers',
-        ];
-
-        if (isset($this->localConfig['route_proxy_prefix'])) {
-            $routeOptions['prefix'] = $this->localConfig['route_proxy_prefix'];
-        }
-
-        if (isset($this->localConfig['route_proxy_middleware'])) {
-            $routeOptions['middleware'] = $this->localConfig['route_proxy_middleware'];
-        }
-
-        $options = array_merge($routeOptions, $options);
+            'prefix' => ServiceProvider::config('route_proxy_prefix'),
+            'middleware' => ServiceProvider::config('route_proxy_middleware'),
+        ], $options);
 
         $this->router->group($options, function ($router) use ($callback) {
             $callback(new RouteRegistrar($router));

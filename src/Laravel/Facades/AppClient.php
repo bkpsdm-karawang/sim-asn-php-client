@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\Facade;
 use SIM_ASN\AppClient as Concret;
 
 /**
- * @method static \SIM_ASN\Client module(string $name)
- * @method static \SIM_ASN\Modules\User user()
- * @method static \SIM_ASN\Modules\Pegawai pegawai()
- * @method static \SIM_ASN\Modules\Skpd skpd()
- * @method static \SIM_ASN\Modules\UnitKerja unitKerja()
- * @method static \SIM_ASN\Modules\Sotk sotk()
+ * @method static \SIM_ASN\Client             module(string $name)
+ * @method static \SIM_ASN\Modules\User       user()
+ * @method static \SIM_ASN\Modules\Pegawai    pegawai()
+ * @method static \SIM_ASN\Modules\Skpd       skpd()
+ * @method static \SIM_ASN\Modules\UnitKerja  unitKerja()
+ * @method static \SIM_ASN\Modules\Sotk       sotk()
  * @method static \SIM_ASN\Models\AccessToken getAccessToken()
  */
 class AppClient extends Facade

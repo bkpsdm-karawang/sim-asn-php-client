@@ -4,13 +4,10 @@ namespace SIM_ASN\Request;
 
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Utils;
-use SIM_ASN\ConfigTrait;
 use SIM_ASN\Models\AccessToken;
 
 abstract class Base extends Request
 {
-    use ConfigTrait;
-
     /**
      * Access token.
      *
@@ -42,10 +39,8 @@ abstract class Base extends Request
     /**
      * constructor.
      */
-    public function __construct(array $localConfig = [], AccessToken $accessToken = null, $body = null, array $query = [])
+    public function __construct(?AccessToken $accessToken = null, $body = null, array $query = [])
     {
-        $this->configureLocal($localConfig);
-
         $this->accessToken = $accessToken;
 
         $uri = $this->endpoint;

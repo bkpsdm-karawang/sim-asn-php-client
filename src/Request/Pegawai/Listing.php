@@ -2,8 +2,8 @@
 
 namespace SIM_ASN\Request\Pegawai;
 
-use SIM_ASN\Request\BaseListing;
 use SIM_ASN\Models\Pegawai;
+use SIM_ASN\Request\BaseListing;
 
 class Listing extends BaseListing
 {

@@ -3,6 +3,7 @@
 namespace SIM_ASN\Modules;
 
 use SIM_ASN\Client;
+use SIM_ASN\Laravel\ServiceProvider;
 use SIM_ASN\Models\AccessToken;
 
 /**
@@ -13,15 +14,13 @@ class Sotk extends Client
     /**
      * constructor.
      *
-     * @param ClientInterface $client
-     *
      * @return void
      */
-    public function __construct(AccessToken $accessToken = null, array $localConfig = [])
+    public function __construct(?AccessToken $accessToken = null, ?string $uri = null)
     {
-        $localConfig['url'] .= '/api/sotk/';
+        $uri = config(ServiceProvider::CONFIG_KEY.'.url').'/api/sotk/';
 
-        parent::__construct($accessToken, $localConfig);
+        parent::__construct($accessToken, $uri);
     }
 
     /**

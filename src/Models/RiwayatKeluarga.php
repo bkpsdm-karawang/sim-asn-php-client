@@ -5,12 +5,15 @@ namespace SIM_ASN\Models;
 class RiwayatKeluarga extends Base
 {
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array
+     * @return array<string, string>
      */
-    protected $casts = [
-        'keluarga' => Keluarga::class,
-        'dokumen' => Dokumen::class
-    ];
+    protected function casts(): array
+    {
+        return [
+            'keluarga' => Keluarga::class,
+            'dokumen' => Dokumen::class,
+        ];
+    }
 }

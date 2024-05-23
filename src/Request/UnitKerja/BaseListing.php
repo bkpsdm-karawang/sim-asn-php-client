@@ -17,14 +17,14 @@ abstract class BaseListing extends Base
      */
     protected $idKey = '{unitId}';
 
-   /**
-    * constructor.
-    */
-   public function __construct(array $localConfig = [], AccessToken $accessToken = null, $idSKpd, $id, array $query = [])
-   {
+    /**
+     * constructor.
+     */
+    public function __construct(?AccessToken $accessToken = null, $idSKpd, $id, array $query = [])
+    {
         $this->endpoint = str_replace($this->idSkpdKey, $idSKpd, $this->endpoint);
         $this->endpoint = str_replace($this->idKey, $id, $this->endpoint);
 
-       parent::__construct($localConfig, $accessToken, $query);
-   }
+        parent::__construct($accessToken, $query);
+    }
 }

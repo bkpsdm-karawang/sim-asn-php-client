@@ -27,8 +27,6 @@ class SotkController extends Controller
     /**
      * get data.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function get(Request $request, $url)

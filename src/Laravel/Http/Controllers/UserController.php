@@ -43,8 +43,6 @@ class UserController extends Controller
     /**
      * get detail.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getDetail(Request $request, $id)

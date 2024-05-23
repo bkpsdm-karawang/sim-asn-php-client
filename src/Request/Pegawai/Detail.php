@@ -2,8 +2,8 @@
 
 namespace SIM_ASN\Request\Pegawai;
 
-use SIM_ASN\Request\BaseDetail;
 use SIM_ASN\Models\Pegawai;
+use SIM_ASN\Request\BaseDetail;
 
 class Detail extends BaseDetail
 {

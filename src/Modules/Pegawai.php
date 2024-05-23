@@ -5,21 +5,21 @@ namespace SIM_ASN\Modules;
 use SIM_ASN\Client;
 
 /**
- * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getList(array $query = [])
- * @method \SIM_ASN\Models\Pegawai getDetail($id)
- * @method \SIM_ASN\Models\Hierarki getHierarki($id)
- * @method \Illuminate\Support\Collection getKartuIdentitas($id)
- * @method \Illuminate\Support\Collection getKontak($id)
- * @method \Illuminate\Support\Collection getAlamat($id)
- * @method \Illuminate\Support\Collection getKeluarga($id)
- * @method \Illuminate\Support\Collection getRiwayatKeluarga($id)
- * @method \Illuminate\Support\Collection getRiwayatGolongan($id)
- * @method \Illuminate\Support\Collection getRiwayatJabatan($id)
- * @method \Illuminate\Support\Collection getRiwayatPendidikan($id)
- * @method \Illuminate\Support\Collection getRiwayatDiklat($id)
- * @method \Illuminate\Support\Collection getRiwayatPelanggaran($id)
- * @method \Illuminate\Support\Collection getDokumen($id)
- * @method \Illuminate\Support\Collection getFile($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getList(array $query = [])
+ * @method \SIM_ASN\Models\Pegawai                     getDetail($id)
+ * @method \SIM_ASN\Models\Hierarki                    getHierarki($id)
+ * @method \Illuminate\Support\Collection              getKartuIdentitas($id)
+ * @method \Illuminate\Support\Collection              getKontak($id)
+ * @method \Illuminate\Support\Collection              getAlamat($id)
+ * @method \Illuminate\Support\Collection              getKeluarga($id)
+ * @method \Illuminate\Support\Collection              getRiwayatKeluarga($id)
+ * @method \Illuminate\Support\Collection              getRiwayatGolongan($id)
+ * @method \Illuminate\Support\Collection              getRiwayatJabatan($id)
+ * @method \Illuminate\Support\Collection              getRiwayatPendidikan($id)
+ * @method \Illuminate\Support\Collection              getRiwayatDiklat($id)
+ * @method \Illuminate\Support\Collection              getRiwayatPelanggaran($id)
+ * @method \Illuminate\Support\Collection              getDokumen($id)
+ * @method \Illuminate\Support\Collection              getFile($id)
  */
 class Pegawai extends Client
 {

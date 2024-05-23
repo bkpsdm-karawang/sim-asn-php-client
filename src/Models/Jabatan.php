@@ -5,16 +5,19 @@ namespace SIM_ASN\Models;
 class Jabatan extends Base
 {
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array
+     * @return array<string, string>
      */
-    protected $casts = [
-        'skpd' => Skpd::class,
-        'unit_kerja' => UnitKerja::class,
-        'golongan' => Golongan::class,
-        'referensi' => Ref\Jabatan::class,
-        'dokumen' => Dokumen::class,
-        'pejabat' => Pegawai::class
-    ];
+    protected function casts(): array
+    {
+        return [
+            'skpd' => Skpd::class,
+            'unit_kerja' => UnitKerja::class,
+            'golongan' => Golongan::class,
+            'referensi' => Ref\Jabatan::class,
+            'dokumen' => Dokumen::class,
+            'pejabat' => Pegawai::class,
+        ];
+    }
 }

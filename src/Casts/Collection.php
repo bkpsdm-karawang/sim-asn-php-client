@@ -2,8 +2,8 @@
 
 namespace SIM_ASN\Casts;
 
-use Illuminate\Support\Collection as Illuminate;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Support\Collection as Illuminate;
 
 class Collection implements CastsAttributes
 {
@@ -17,7 +17,8 @@ class Collection implements CastsAttributes
     /**
      * Create a new cast class instance.
      *
-     * @param  string|null  $model
+     * @param string|null $model
+     *
      * @return void
      */
     public function __construct($model)
@@ -28,18 +29,14 @@ class Collection implements CastsAttributes
     /**
      * Transform the attribute from the underlying model values.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  array  $attributes
-     * @return mixed
+     * @param \Illuminate\Database\Eloquent\Model $model
      */
     public function get($model, string $key, $value, array $attributes)
     {
         if (isset($attributes[$key])) {
             $data = json_decode($attributes[$key], true);
 
-            return new Illuminate(array_map(function($item) {
+            return new Illuminate(array_map(function ($item) {
                 return new $this->model($item);
             }, $data));
         }
@@ -50,11 +47,7 @@ class Collection implements CastsAttributes
     /**
      * Transform the attribute to its underlying model values.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  array  $attributes
-     * @return mixed
+     * @param \Illuminate\Database\Eloquent\Model $model
      */
     public function set($model, string $key, $value, array $attributes)
     {
@@ -63,7 +56,7 @@ class Collection implements CastsAttributes
                 $value = $value->toArray();
             }
 
-           return json_encode($value);
+            return json_encode($value);
         }
 
         return json_encode([]);

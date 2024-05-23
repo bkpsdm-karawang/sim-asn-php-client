@@ -19,13 +19,16 @@ class User extends Base
     protected $hidden = ['is_default_password', 'services'];
 
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array
+     * @return array<string, string>
      */
-    protected $casts = [
-        'pegawai' => Pegawai::class,
-        'skpd' => Skpd::class,
-        'unit_kerja' => UnitKerja::class
-    ];
+    protected function casts(): array
+    {
+        return [
+            'pegawai' => Pegawai::class,
+            'skpd' => Skpd::class,
+            'unit_kerja' => UnitKerja::class,
+        ];
+    }
 }

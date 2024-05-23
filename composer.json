@@ -1,7 +1,7 @@
 {
     "name": "bkpsdm-karawang/sim-asn-php-client",
     "description": "PHP Client for SIM-ASN Service BKPSDM Karawang",
-    "version": "2.1.4",
+    "version": "3.0.0",
     "type": "library",
     "keywords": [
         "sim asn",
@@ -22,16 +22,12 @@
         "reference": "fd4380d6fc37626e2f799f29d91195040137eba9"
     },
     "require": {
-        "php": "^8.1",
-        "guzzlehttp/guzzle": "^7.0",
-        "illuminate/support": "^10.0",
-        "illuminate/http": "^10.0",
-        "illuminate/pagination": "^10.0",
-        "illuminate/database": "^10.0",
-        "denmasyarikin/laravel-api-pagination": "^0.1"
-    },
-    "suggest": {
-        "laravel/framework": "^9.0"
+        "php": "^8.2",
+        "illuminate/support": "^10|^11",
+        "illuminate/http": "^10|^11",
+        "illuminate/pagination": "^10|^11",
+        "illuminate/database": "^10|^11",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "minimum-stability": "dev",
     "autoload": {
@@ -47,13 +43,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SIM_ASN\\Laravel\\Providers\\LaravelServiceProvider"
+                "SIM_ASN\\Laravel\\ServiceProvider"
             ]
         }
     },
     "scripts": {
-        "fix": [
-            "php-cs-fixer fix . --rules=@Symfony"
-        ]
+        "fix":  "php-cs-fixer fix . --rules=@Symfony"
     }
 }

@@ -3,7 +3,6 @@
 namespace SIM_ASN;
 
 use Illuminate\Support\Manager as BaseManager;
-use InvalidArgumentException;
 use SIM_ASN\Modules\Pegawai;
 use SIM_ASN\Modules\Skpd;
 use SIM_ASN\Modules\Sotk;
@@ -15,7 +14,7 @@ class ModuleManager extends BaseManager
     /**
      * app client.
      *
-     * @var \SIM_ASN\AppClient
+     * @var AppClient
      */
     protected $client;
 
@@ -37,7 +36,7 @@ class ModuleManager extends BaseManager
      */
     public function createUserDriver(): User
     {
-        return new User($this->client->getAccessToken(), $this->client->localConfig);
+        return new User($this->client->getAccessToken());
     }
 
     /**
@@ -45,7 +44,7 @@ class ModuleManager extends BaseManager
      */
     public function createPegawaiDriver(): Pegawai
     {
-        return new Pegawai($this->client->getAccessToken(), $this->client->localConfig);
+        return new Pegawai($this->client->getAccessToken());
     }
 
     /**
@@ -53,7 +52,7 @@ class ModuleManager extends BaseManager
      */
     public function createSkpdDriver(): Skpd
     {
-        return new Skpd($this->client->getAccessToken(), $this->client->localConfig);
+        return new Skpd($this->client->getAccessToken());
     }
 
     /**
@@ -61,7 +60,7 @@ class ModuleManager extends BaseManager
      */
     public function createUnitKerjaDriver(): UnitKerja
     {
-        return new UnitKerja($this->client->getAccessToken(), $this->client->localConfig);
+        return new UnitKerja($this->client->getAccessToken());
     }
 
     /**
@@ -69,7 +68,7 @@ class ModuleManager extends BaseManager
      */
     public function createSotkDriver(): Sotk
     {
-        return new Sotk($this->client->getAccessToken(), $this->client->localConfig);
+        return new Sotk($this->client->getAccessToken());
     }
 
     /**
@@ -81,6 +80,6 @@ class ModuleManager extends BaseManager
      */
     public function getDefaultDriver()
     {
-        throw new InvalidArgumentException('No simpeg client driver was specified.');
+        throw new \InvalidArgumentException('No simpeg client driver was specified.');
     }
 }

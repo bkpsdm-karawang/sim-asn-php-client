@@ -12,21 +12,24 @@ class Pegawai extends Base
     protected $keyType = 'string';
 
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array
+     * @return array<string, string>
      */
-    protected $casts = [
-        'skpd' => Skpd::class,
-        'unit_kerja' => UnitKerja::class,
-        'pendidikan_terakhir' => Pendidikan::class,
-        'golongan' => Golongan::class,
-        'jabatan' => Jabatan::class.':collection',
-        'dokumen_masuk' => Dokumen::class,
-        'dokumen_berhenti' => Dokumen::class,
-        'alamat' => Alamat::class.':collection',
-        'kartu_identitas' => KartuIdentitas::class.':collection',
-        'kontak' => Kontak::class.':collection',
-        'keluarga' => Keluarga::class.':collection',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'skpd' => Skpd::class,
+            'unit_kerja' => UnitKerja::class,
+            'pendidikan_terakhir' => Pendidikan::class,
+            'golongan' => Golongan::class,
+            'jabatan' => Jabatan::class.':collection',
+            'dokumen_masuk' => Dokumen::class,
+            'dokumen_berhenti' => Dokumen::class,
+            'alamat' => Alamat::class.':collection',
+            'kartu_identitas' => KartuIdentitas::class.':collection',
+            'kontak' => Kontak::class.':collection',
+            'keluarga' => Keluarga::class.':collection',
+        ];
+    }
 }

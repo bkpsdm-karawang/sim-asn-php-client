@@ -5,13 +5,13 @@ namespace SIM_ASN\Modules;
 use SIM_ASN\Client;
 
 /**
- * @method \SIM_ASN\Models\Skpd getDetail($id)
- * @method \Illuminate\Support\Collection getHierarki($id)
- * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getKartuIdentitas($id)
- * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getKontak($id)
- * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getAlamat($id)
- * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getKeluarga($id)
- * @method \ElemenX\ApiPagination\Bridges\LengthAwarePaginator getPendidikan($id)
+ * @method \SIM_ASN\Models\Skpd                        getDetail($id)
+ * @method \Illuminate\Support\Collection              getHierarki($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKartuIdentitas($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKontak($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getAlamat($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getKeluarga($id)
+ * @method \Illuminate\Pagination\LengthAwarePaginator getPendidikan($id)
  */
 class Skpd extends Client
 {

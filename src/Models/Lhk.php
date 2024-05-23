@@ -5,11 +5,12 @@ namespace SIM_ASN\Models;
 class Lhk extends Base
 {
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array
+     * @return array<string, string>
      */
-    protected $casts = [
-        'file' => File::class
-    ];
+    protected function casts(): array
+    {
+        return ['file' => File::class];
+    }
 }

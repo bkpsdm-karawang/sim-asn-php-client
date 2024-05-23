@@ -8,17 +8,17 @@ use SIM_ASN\Request\BaseListing as Base;
 abstract class BaseListing extends Base
 {
     /**
-    * id key.
-    */
-   protected $idKey = '{id}';
+     * id key.
+     */
+    protected $idKey = '{id}';
 
-   /**
-    * constructor.
-    */
-   public function __construct(array $localConfig = [], AccessToken $accessToken = null, $identifier, array $query = [])
-   {
-       $this->endpoint = str_replace($this->idKey, $identifier, $this->endpoint);
+    /**
+     * constructor.
+     */
+    public function __construct(?AccessToken $accessToken = null, $identifier, array $query = [])
+    {
+        $this->endpoint = str_replace($this->idKey, $identifier, $this->endpoint);
 
-       parent::__construct($localConfig, $accessToken, $query);
-   }
+        parent::__construct($accessToken, $query);
+    }
 }

@@ -2,10 +2,10 @@
 
 namespace SIM_ASN\Models;
 
-use SIM_ASN\Casts\Model as ModelCasting;
-use SIM_ASN\Casts\Collection as CollectionCasting;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Eloquent\Castable;
+use Illuminate\Database\Eloquent\Model;
+use SIM_ASN\Casts\Collection as CollectionCasting;
+use SIM_ASN\Casts\Model as ModelCasting;
 
 abstract class Base extends Model implements Castable
 {
@@ -19,12 +19,11 @@ abstract class Base extends Model implements Castable
     /**
      * Get the caster class to use when casting from / to this cast target.
      *
-     * @param  array  $arguments
      * @return object|string
      */
     public static function castUsing(array $arguments)
     {
-        if (count($arguments) && $arguments[0] === 'collection') {
+        if (count($arguments) && 'collection' === $arguments[0]) {
             return new CollectionCasting(static::class);
         }
 

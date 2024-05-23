@@ -2,8 +2,8 @@
 
 namespace SIM_ASN\Request\User;
 
-use SIM_ASN\Request\BaseListing;
 use SIM_ASN\Models\User;
+use SIM_ASN\Request\BaseListing;
 
 class Listing extends BaseListing
 {

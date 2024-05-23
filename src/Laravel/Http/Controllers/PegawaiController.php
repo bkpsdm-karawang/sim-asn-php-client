@@ -43,8 +43,6 @@ class PegawaiController extends Controller
     /**
      * get detail.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getDetail(Request $request, $id)
@@ -60,8 +58,6 @@ class PegawaiController extends Controller
 
     /**
      * get hierarki.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -79,8 +75,6 @@ class PegawaiController extends Controller
     /**
      * get kartu identitas.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getKartuIdentitas(Request $request, $id)
@@ -96,8 +90,6 @@ class PegawaiController extends Controller
 
     /**
      * get kontak.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -115,8 +107,6 @@ class PegawaiController extends Controller
     /**
      * get alamat.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getAlamat(Request $request, $id)
@@ -132,8 +122,6 @@ class PegawaiController extends Controller
 
     /**
      * get keluarga.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -151,8 +139,6 @@ class PegawaiController extends Controller
     /**
      * get riwayat keluarga.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getRiwayatKeluarga(Request $request, $id)
@@ -168,8 +154,6 @@ class PegawaiController extends Controller
 
     /**
      * get riwayat golongan.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -187,8 +171,6 @@ class PegawaiController extends Controller
     /**
      * get riwayat jabatan.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getRiwayatJabatan(Request $request, $id)
@@ -204,8 +186,6 @@ class PegawaiController extends Controller
 
     /**
      * get riwayat pendidikan.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -223,8 +203,6 @@ class PegawaiController extends Controller
     /**
      * get riwayat diklat.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getRiwayatDiklat(Request $request, $id)
@@ -240,8 +218,6 @@ class PegawaiController extends Controller
 
     /**
      * get riwayat pelanggaran.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */
@@ -259,8 +235,6 @@ class PegawaiController extends Controller
     /**
      * get dokumen.
      *
-     * @param mixed $id
-     *
      * @return JsonResponse
      */
     public function getDokumen(Request $request, $id)
@@ -276,8 +250,6 @@ class PegawaiController extends Controller
 
     /**
      * get file.
-     *
-     * @param mixed $id
      *
      * @return JsonResponse
      */

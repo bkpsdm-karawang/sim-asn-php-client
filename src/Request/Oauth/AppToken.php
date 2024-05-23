@@ -3,6 +3,7 @@
 namespace SIM_ASN\Request\Oauth;
 
 use GuzzleHttp\Utils;
+use SIM_ASN\Laravel\ServiceProvider;
 
 class AppToken extends AccessToken
 {
@@ -13,9 +14,9 @@ class AppToken extends AccessToken
     {
         return Utils::jsonEncode([
             'grant_type' => 'client_credentials',
-            'client_id' => $this->localConfig['client_id'],
-            'client_secret' => $this->localConfig['client_secret'],
-            'scope' => $this->localConfig['app_scope'],
-       ]);
+            'client_id' => ServiceProvider::config('client_id'),
+            'client_secret' => ServiceProvider::config('client_secret'),
+            'scope' => ServiceProvider::config('app_scope'),
+        ]);
     }
 }
