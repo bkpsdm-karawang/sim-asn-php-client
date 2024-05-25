@@ -7,7 +7,7 @@ use SIM_ASN\OauthClient as Concret;
 
 /**
  * @method static \SIM_ASN\Models\AccessToken       requestAccessToken(string $code = null)
- * @method static \SIM_ASN\Models\AccessToken       requestRefreshTokenToken(string $refreshToken = null)
+ * @method static \SIM_ASN\Models\AccessToken       requestRefreshToken(string $refreshToken = null)
  * @method static \SIM_ASN\Models\AccessToken       requestAppToken()
  * @method static \Illuminate\Http\RedirectResponse requestCode($state = 'login')
  * @method static \Illuminate\Http\RedirectResponse handleCallback(\Illuminate\Http\Request $request, \Clousure $createToken = null)

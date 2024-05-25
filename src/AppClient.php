@@ -22,7 +22,9 @@ class AppClient extends Client
      */
     public function __construct(?AccessToken $accessToken = null)
     {
-        $accessToken = $this->generateAccessToken();
+        if (!$accessToken) {
+            $accessToken = $this->generateAccessToken();
+        }
 
         parent::__construct($accessToken);
     }

@@ -51,15 +51,15 @@ abstract class Client extends Guzzle
      *
      * @return void
      */
-    public function __construct(?AccessToken $accessToken = null, ?string $uri = null)
+    public function __construct(?AccessToken $accessToken = null, array $config = [])
     {
-        $uri = $uri ?? config(ServiceProvider::CONFIG_KEY.'.url');
         $this->accessToken = $accessToken;
 
-        $config = [
-            'verify' => 'production' === env('APP_ENV'),
-            'base_uri' => $uri,
-        ];
+        $config['verify'] = 'production' === env('APP_ENV');
+
+        if (!isset($config['base_uri'])) {
+            $config['base_uri'] = config(ServiceProvider::CONFIG_KEY.'.url');
+        }
 
         parent::__construct($config);
     }
@@ -71,19 +71,15 @@ abstract class Client extends Guzzle
     {
         $this->accessToken = $accessToken;
 
-        return new static($accessToken);
+        return $this;
     }
 
     /**
      * get access token.
      */
-    public function getAccessToken(): AccessToken
+    public function getAccessToken(): ?AccessToken
     {
-        if ($this->accessToken) {
-            return $this->accessToken;
-        }
-
-        throw new \Exception('Access token not found');
+        return $this->accessToken;
     }
 
     /**
@@ -160,22 +156,22 @@ abstract class Client extends Guzzle
      */
     public function __call($method, $args)
     {
-        if (array_key_exists($method, $this->requests)) {
-            $this->currentProcess = [
-                'method' => $method,
-                'args' => $args,
-            ];
-
-            $method = $this->requests[$method];
-
-            $request = new $method(
-                $this->accessToken,
-                ...$args
-            );
-
-            return $this->process($request);
+        if (!array_key_exists($method, $this->requests)) {
+            return parent::__call($method, $args);
         }
 
-        throw new \InvalidArgumentException("Method {$method} undefined");
+        $this->currentProcess = [
+            'method' => $method,
+            'args' => $args,
+        ];
+
+        $method = $this->requests[$method];
+
+        $request = new $method(
+            $this->accessToken,
+            ...$args
+        );
+
+        return $this->process($request);
     }
 }

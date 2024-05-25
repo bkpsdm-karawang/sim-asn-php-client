@@ -20,7 +20,7 @@ class Sotk extends Client
     {
         $uri = config(ServiceProvider::CONFIG_KEY.'.url').'/api/sotk/';
 
-        parent::__construct($accessToken, $uri);
+        parent::__construct($accessToken, ['base_uri' => $uri]);
     }
 
     /**

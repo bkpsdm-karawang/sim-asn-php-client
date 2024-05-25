@@ -18,7 +18,7 @@ class OauthClient extends Client
      */
     protected $requests = [
         'requestAccessToken' => Oauth\AccessToken::class,
-        'requestRefreshTokenToken' => Oauth\RefreshToken::class,
+        'requestRefreshToken' => Oauth\RefreshToken::class,
         'requestAppToken' => Oauth\AppToken::class,
     ];
 
@@ -74,7 +74,7 @@ class OauthClient extends Client
     }
 
     /**
-     * redirect to frontend after login or connect simpeg.
+     * redirect to frontend after login or connect sim-asn.
      */
     protected function redirect($state = 'login', string $key, string $message = 'No message'): RedirectResponse
     {

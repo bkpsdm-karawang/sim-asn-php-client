@@ -1,29 +1,12 @@
 # SIM-ASN PHP Client
 
-This is php client for SIM-ASN BKPSDM Kabupaten Karawang api services
+This is php client SDK for SIM-ASN BKPSDM Kabupaten Karawang api services
 
 ## Installation
 require this package via composer
 
 ```
 composer require bkpsdm-karawang/sim-asn-php-client
-```
-### Larvel Installation
-Add service provider to `config/app.php`
-```php
-SIM_ASN\Laravel\Providers\LaravelServiceProvider::class,
-
-```
-Publish config with run:
-
-```
-php artisan vendor:publish --provider="SIM_ASN\Laravel\Providers\LaravelServiceProvider" --tag="config"
-
-```
-### Lumen Installation
-Add service provider to `bootstrap/app.php`
-```php
-$app->register(SIM_ASN\Laravel\Providers\LumenServiceProvider::class);
 ```
 add environment value to `.env`
 ```env
@@ -86,14 +69,6 @@ Create callback handler route
         });
     }
 ```
-This method will automaticly return redirect response to the frontend based on state you defined, create redirect with state in `config/sim-asn.php`
-```php
-    'user_redirect_state' => [
-        'login' => env('FRONTEND_URL').'/login',
-        'register' => env('FRONTEND_URL').'/register',
-        'connect' => env('FRONTEND_URL').'/profile'
-    ],
-```
 Manualy get access token by response code
 ```php
 $accessToken = OauthClient::requestAccessToken($request->code);
@@ -101,4 +76,13 @@ $accessToken = OauthClient::requestAccessToken($request->code);
 Get user profile
 ```php
 $user = UserClient::setAccessToken($accessToken)->getUser();
+```
+App Client or User Client is extended class from guzzle client so you can directly use http guzzle client
+```php
+use SIM_ASN\Laravel\Facades\AppClient;
+...
+AppClient::get('/api/endpoint');
+AppClient::post('/api/endpoint', [
+    'body' => ['foo' => 'bar']
+]);
 ```

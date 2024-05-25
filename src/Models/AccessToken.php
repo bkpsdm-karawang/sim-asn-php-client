@@ -11,6 +11,6 @@ class AccessToken extends Base
      */
     public function refresh(): AccessToken
     {
-        return OauthClient::requestRefreshTokenToken($this->refresh_token);
+        return OauthClient::requestRefreshToken($this->refresh_token);
     }
 }

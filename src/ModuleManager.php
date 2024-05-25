@@ -74,12 +74,10 @@ class ModuleManager extends BaseManager
     /**
      * Get the default driver name.
      *
-     * @return string
-     *
      * @throws \InvalidArgumentException
      */
     public function getDefaultDriver()
     {
-        throw new \InvalidArgumentException('No simpeg client driver was specified.');
+        throw new \InvalidArgumentException('No client driver was specified.');
     }
 }
