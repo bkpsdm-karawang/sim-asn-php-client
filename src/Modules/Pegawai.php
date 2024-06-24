@@ -20,6 +20,7 @@ use SIM_ASN\Client;
  * @method \Illuminate\Support\Collection              getRiwayatPelanggaran($id)
  * @method \Illuminate\Support\Collection              getDokumen($id)
  * @method \Illuminate\Support\Collection              getFile($id)
+ * @method array                                       getCompleteness($id)
  */
 class Pegawai extends Client
 {
@@ -47,5 +48,6 @@ class Pegawai extends Client
         'getRiwayatSkp' => \SIM_ASN\Request\Pegawai\RiwayatSkp::class,
         'getDokumen' => \SIM_ASN\Request\Pegawai\Dokumen::class,
         'getFile' => \SIM_ASN\Request\Pegawai\File::class,
+        'getCompleteness' => \SIM_ASN\Request\Pegawai\Completeness::class,
     ];
 }

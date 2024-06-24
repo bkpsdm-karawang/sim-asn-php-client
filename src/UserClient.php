@@ -38,6 +38,7 @@ class UserClient extends Client
         'getRiwayatSkp' => Request\Profile\RiwayatSkp::class,
         'getDokumen' => Request\Profile\Dokumen::class,
         'getFile' => Request\Profile\File::class,
+        'getCompleteness' => Request\Profile\Completeness::class,
     ];
 
     /**
