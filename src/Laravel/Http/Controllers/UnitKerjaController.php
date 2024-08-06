@@ -48,7 +48,7 @@ class UnitKerjaController extends Controller
     public function getHierarki(Request $request, $id, $unitId)
     {
         try {
-            $data = $this->module->getHierarki($id, $unitId);
+            $data = $this->module->getHierarki($id, $unitId, $request->all());
 
             return new JsonResponse($data);
         } catch (ClientException $error) {

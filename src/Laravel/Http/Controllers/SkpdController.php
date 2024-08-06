@@ -48,7 +48,7 @@ class SkpdController extends Controller
     public function getHierarki(Request $request, $id)
     {
         try {
-            $data = $this->module->getHierarki($id);
+            $data = $this->module->getHierarki($id, $request->all());
 
             return new JsonResponse($data);
         } catch (ClientException $error) {
