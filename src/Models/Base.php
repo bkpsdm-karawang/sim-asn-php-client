@@ -43,17 +43,16 @@ abstract class Base extends Model implements Castable
     public function __construct(array $attributes = [], bool $castField = true, $key = null, $castPrefix = null)
     {
         $this->castField = $castField;
-        $this->key = $key;
+        $this->key = $key ?? $this->getTable();
         $this->castPrefix = $castPrefix;
 
         if ($this->castField) {
             $fields = ServiceProvider::config('cast_fields', []);
-            $key = $key ?? $this->getTable();
 
-            if ($castPrefix && isset($fields["{$castPrefix}.{$key}"])) {
-                $this->fillable($fields["{$castPrefix}.{$key}"]);
-            } elseif (isset($fields[$key])) {
-                $this->fillable($fields[$key]);
+            if ($castPrefix && isset($fields["{$castPrefix}.{$this->key}"])) {
+                $this->fillable($fields["{$castPrefix}.{$this->key}"]);
+            } elseif (isset($fields[$this->key])) {
+                $this->fillable($fields[$this->key]);
             }
         }
 
