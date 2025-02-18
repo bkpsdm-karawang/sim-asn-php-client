@@ -30,4 +30,10 @@ return [
     'route_proxy_auto' => true,
     'route_proxy_prefix' => 'sim-asn',
     'route_proxy_middleware' => ['auth'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | SIM-ASN Routes
+    */
+    'cast_fields' => [],
 ];

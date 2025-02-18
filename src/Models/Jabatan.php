@@ -12,12 +12,9 @@ class Jabatan extends Base
     protected function casts(): array
     {
         return [
-            'skpd' => Skpd::class,
-            'unit_kerja' => UnitKerja::class,
             'golongan' => Golongan::class,
             'referensi' => Ref\Jabatan::class,
             'dokumen' => Dokumen::class,
-            'pejabat' => Pegawai::class,
         ];
     }
 }

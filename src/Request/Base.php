@@ -37,6 +37,13 @@ abstract class Base extends Request
     protected $endpoint = '/';
 
     /**
+     * cast field.
+     *
+     * @var bool
+     */
+    protected $castField = true;
+
+    /**
      * constructor.
      */
     public function __construct(?AccessToken $accessToken = null, $body = null, array $query = [])
@@ -54,6 +61,16 @@ abstract class Base extends Request
             $this->generateRequestHeader(),
             $this->generateRequestBody($body)
         );
+    }
+
+    /**
+     * without cast field.
+     */
+    public function setCastField(bool $castField): self
+    {
+        $this->castField = $castField;
+
+        return $this;
     }
 
     /**
@@ -109,7 +126,7 @@ abstract class Base extends Request
     protected function createModel(array $data)
     {
         if ($this->model) {
-            return new $this->model($data);
+            return new $this->model($data, $this->castField);
         }
 
         return $data;

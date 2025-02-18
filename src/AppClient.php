@@ -20,13 +20,13 @@ class AppClient extends Client
      *
      * @return void
      */
-    public function __construct(?AccessToken $accessToken = null)
+    public function __construct(?AccessToken $accessToken = null, bool $castField = true)
     {
         if (!$accessToken) {
             $accessToken = $this->generateAccessToken();
         }
 
-        parent::__construct($accessToken);
+        parent::__construct($accessToken, [], $castField);
     }
 
     /**
@@ -53,31 +53,23 @@ class AppClient extends Client
     /**
      * save acess token.
      */
-    protected function saveAccessToken($path, AccessToken $accessToken, bool $storage = false): void
+    protected function saveAccessToken($path, AccessToken $accessToken): void
     {
-        try {
-            if ($storage && function_exists('storage_path')) {
-                $path = storage_path($path);
-            }
-
-            file_put_contents($path, json_encode($accessToken->toArray()));
-        } catch (\Exception $error) {
-            if (!$storage) {
-                $this->saveAccessToken($path, $accessToken, true);
-            } else {
-                throw $error;
-            }
+        if (function_exists('storage_path')) {
+            $path = storage_path($path);
         }
+
+        file_put_contents($path, json_encode($accessToken->toArray()));
     }
 
     /**
      * get local token.
      */
-    protected function getLocalToken(bool $storage = false): ?AccessToken
+    protected function getLocalToken(): ?AccessToken
     {
         $path = ServiceProvider::config('app_token_path');
 
-        if ($storage && function_exists('storage_path')) {
+        if (function_exists('storage_path')) {
             $path = storage_path($path);
         }
 
@@ -87,10 +79,6 @@ class AppClient extends Client
             if (is_array($decoded) && $this->isValidToken($decoded)) {
                 return new AccessToken($decoded);
             }
-        }
-
-        if (!$storage) {
-            return $this->getLocalToken(true);
         }
 
         return null;
@@ -129,48 +117,48 @@ class AppClient extends Client
     /**
      * create module.
      */
-    public function module(string $module)
+    public function module(string $module, bool $castField = true)
     {
-        return (new ModuleManager($this))->module($module);
+        return (new ModuleManager($this, $castField))->module($module);
     }
 
     /**
      * create module user.
      */
-    public function user(): UserModule
+    public function user(bool $castField = true): UserModule
     {
-        return (new ModuleManager($this))->createUserDriver();
+        return (new ModuleManager($this, $castField))->createUserDriver();
     }
 
     /**
      * create module pegawai.
      */
-    public function pegawai(): PegawaiModule
+    public function pegawai(bool $castField = true): PegawaiModule
     {
-        return (new ModuleManager($this))->createPegawaiDriver();
+        return (new ModuleManager($this, $castField))->createPegawaiDriver();
     }
 
     /**
      * create module skpd.
      */
-    public function skpd(): SkpdModule
+    public function skpd(bool $castField = true): SkpdModule
     {
-        return (new ModuleManager($this))->createSkpdDriver();
+        return (new ModuleManager($this, $castField))->createSkpdDriver();
     }
 
     /**
      * create module skpd.
      */
-    public function unitKerja(): UnitKerjaModule
+    public function unitKerja(bool $castField = true): UnitKerjaModule
     {
-        return (new ModuleManager($this))->createUnitKerjaDriver();
+        return (new ModuleManager($this, $castField))->createUnitKerjaDriver();
     }
 
     /**
      * create module sotk.
      */
-    public function sotk(): SotkModule
+    public function sotk(bool $castField = true): SotkModule
     {
-        return (new ModuleManager($this))->createSotkDriver();
+        return (new ModuleManager($this, $castField))->createSotkDriver();
     }
 }

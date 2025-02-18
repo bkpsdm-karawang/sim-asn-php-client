@@ -18,9 +18,17 @@ class ModuleManager extends BaseManager
      */
     protected $client;
 
-    public function __construct(AppClient $client)
+    /**
+     * cast field.
+     *
+     * @var bool
+     */
+    protected $castField = true;
+
+    public function __construct(AppClient $client, bool $castField = true)
     {
         $this->client = $client;
+        $this->castField = $castField;
     }
 
     /**
@@ -36,7 +44,7 @@ class ModuleManager extends BaseManager
      */
     public function createUserDriver(): User
     {
-        return new User($this->client->getAccessToken());
+        return new User($this->client->getAccessToken(), [], $this->castField);
     }
 
     /**
@@ -44,7 +52,7 @@ class ModuleManager extends BaseManager
      */
     public function createPegawaiDriver(): Pegawai
     {
-        return new Pegawai($this->client->getAccessToken());
+        return new Pegawai($this->client->getAccessToken(), [], $this->castField);
     }
 
     /**
@@ -52,7 +60,7 @@ class ModuleManager extends BaseManager
      */
     public function createSkpdDriver(): Skpd
     {
-        return new Skpd($this->client->getAccessToken());
+        return new Skpd($this->client->getAccessToken(), [], $this->castField);
     }
 
     /**
@@ -60,7 +68,7 @@ class ModuleManager extends BaseManager
      */
     public function createUnitKerjaDriver(): UnitKerja
     {
-        return new UnitKerja($this->client->getAccessToken());
+        return new UnitKerja($this->client->getAccessToken(), [], $this->castField);
     }
 
     /**
@@ -68,7 +76,7 @@ class ModuleManager extends BaseManager
      */
     public function createSotkDriver(): Sotk
     {
-        return new Sotk($this->client->getAccessToken());
+        return new Sotk($this->client->getAccessToken(), null, $this->castField);
     }
 
     /**

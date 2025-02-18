@@ -2,39 +2,21 @@
 
 namespace SIM_ASN\Casts;
 
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Illuminate\Database\Eloquent\Model as IlMo;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Model implements CastsAttributes
+class Model extends Base
 {
-    /**
-     * Model.
-     *
-     * @var string
-     */
-    protected $model;
-
-    /**
-     * Create a new cast class instance.
-     *
-     * @param string|null $model
-     *
-     * @return void
-     */
-    public function __construct($model)
-    {
-        $this->model = $model;
-    }
-
     /**
      * Transform the attribute from the underlying model values.
      *
-     * @param IlMo $model
+     * @param EloquentModel $model
      */
     public function get($model, string $key, $value, array $attributes)
     {
         if (isset($attributes[$key])) {
-            return new $this->model(json_decode($attributes[$key], true));
+            $data = json_decode($attributes[$key], true);
+
+            return new $this->model($data, $this->instance->castField, $key, $this->castPrefix);
         }
 
         return null;
@@ -43,16 +25,16 @@ class Model implements CastsAttributes
     /**
      * Transform the attribute to its underlying model values.
      *
-     * @param IlMo $model
+     * @param EloquentModel $model
      */
-    public function set($model, string $key, $value, array $attributes)
+    public function set($model, string $key, $value, array $attributes): ?string
     {
-        if ($value) {
-            if ($value instanceof IlMo) {
-                $value = $value->toArray();
-            }
+        if ($value instanceof EloquentModel || is_array($value)) {
+            $valueArray = $value instanceof EloquentModel
+                ? $value->toArray()
+                : (new $this->model($value, $this->instance->castField, $key, $this->castPrefix))->toArray();
 
-            return json_encode($value);
+            return json_encode($valueArray);
         }
 
         return null;

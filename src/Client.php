@@ -47,13 +47,21 @@ abstract class Client extends Guzzle
     protected $retrying = false;
 
     /**
+     * cast field.
+     *
+     * @var bool
+     */
+    protected $castField = true;
+
+    /**
      * constructor.
      *
      * @return void
      */
-    public function __construct(?AccessToken $accessToken = null, array $config = [])
+    public function __construct(?AccessToken $accessToken = null, array $config = [], bool $castField = true)
     {
         $this->accessToken = $accessToken;
+        $this->castField = $castField;
 
         $config['verify'] = 'production' === env('APP_ENV');
 
@@ -157,7 +165,12 @@ abstract class Client extends Guzzle
     public function __call($method, $args)
     {
         if (!array_key_exists($method, $this->requests)) {
-            return parent::__call($method, $args);
+            $uri = $args[0];
+            $opts = $args[1] ?? [];
+
+            return 'Async' === \substr($method, -5)
+                ? $this->requestAsync(\substr($method, 0, -5), $uri, $opts)
+                : $this->request($method, $uri, $opts);
         }
 
         $this->currentProcess = [
@@ -171,6 +184,10 @@ abstract class Client extends Guzzle
             $this->accessToken,
             ...$args
         );
+
+        if (!$this->castField) {
+            $request->setCastField(false);
+        }
 
         return $this->process($request);
     }

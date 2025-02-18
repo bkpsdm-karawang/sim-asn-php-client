@@ -2,30 +2,10 @@
 
 namespace SIM_ASN\Casts;
 
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Support\Collection as Illuminate;
 
-class Collection implements CastsAttributes
+class Collection extends Base
 {
-    /**
-     * Model.
-     *
-     * @var string
-     */
-    protected $model;
-
-    /**
-     * Create a new cast class instance.
-     *
-     * @param string|null $model
-     *
-     * @return void
-     */
-    public function __construct($model)
-    {
-        $this->model = $model;
-    }
-
     /**
      * Transform the attribute from the underlying model values.
      *
@@ -36,8 +16,8 @@ class Collection implements CastsAttributes
         if (isset($attributes[$key])) {
             $data = json_decode($attributes[$key], true);
 
-            return new Illuminate(array_map(function ($item) {
-                return new $this->model($item);
+            return new Illuminate(array_map(function ($item) use ($key) {
+                return new $this->model($item, $this->instance->castField, $key, $this->castPrefix);
             }, $data));
         }
 
@@ -51,14 +31,20 @@ class Collection implements CastsAttributes
      */
     public function set($model, string $key, $value, array $attributes)
     {
-        if ($value) {
-            if ($value instanceof Illuminate) {
-                $value = $value->toArray();
-            }
-
-            return json_encode($value);
+        if (!$value) {
+            return json_encode([]);
         }
 
-        return json_encode([]);
+        $transform = function ($item) use ($key) {
+            return new $this->model($item, $this->instance->castField, $key, $this->castPrefix);
+        };
+
+        if ($value instanceof Illuminate) {
+            $value = array_map($transform, $value->toArray());
+        } elseif (is_array($value)) {
+            $value = array_map($transform, $value);
+        }
+
+        return json_encode($value);
     }
 }
