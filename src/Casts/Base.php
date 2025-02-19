@@ -37,6 +37,6 @@ abstract class Base implements CastsAttributes
     {
         $this->model = $model;
         $this->instance = $instance;
-        $this->castPrefix = $instance->castPrefix ? "{$instance->castPrefix}.{$instance->key}" : $instance->key;
+        $this->castPrefix = $instance->castPrefix ? "{$instance->castPrefix}.{$instance->key}" : ($instance->key ?? $instance->getTable());
     }
 }

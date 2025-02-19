@@ -30,11 +30,13 @@ class Model extends Base
     public function set($model, string $key, $value, array $attributes): ?string
     {
         if ($value instanceof EloquentModel || is_array($value)) {
-            $valueArray = $value instanceof EloquentModel
-                ? $value->toArray()
-                : (new $this->model($value, $this->instance->castField, $key, $this->castPrefix))->toArray();
+            if ($value instanceof EloquentModel) {
+                $value = $value->toArray();
+            }
 
-            return json_encode($valueArray);
+            $data = (new $this->model($value, $this->instance->castField, $key, $this->castPrefix))->toArray();
+
+            return json_encode($data);
         }
 
         return null;

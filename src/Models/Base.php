@@ -40,9 +40,9 @@ abstract class Base extends Model implements Castable
      *
      * @return void
      */
-    public function __construct(array $attributes = [], bool $castField = true, $key = null, $castPrefix = null)
+    public function __construct(array $attributes = [], ?bool $castField = null, $key = null, $castPrefix = null, bool $debug = false)
     {
-        $this->castField = $castField;
+        $this->castField = $castField ?? true;
         $this->key = $key ?? $this->getTable();
         $this->castPrefix = $castPrefix;
 
@@ -53,6 +53,8 @@ abstract class Base extends Model implements Castable
                 $this->fillable($fields["{$castPrefix}.{$this->key}"]);
             } elseif (isset($fields[$this->key])) {
                 $this->fillable($fields[$this->key]);
+            } elseif (isset($fields[static::class])) {
+                $this->fillable($fields[static::class]);
             }
         }
 
