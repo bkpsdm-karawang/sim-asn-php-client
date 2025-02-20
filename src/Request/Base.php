@@ -83,6 +83,10 @@ abstract class Base extends Request
             'Content-Type' => 'application/json',
         ];
 
+        if (app()->runningInConsole()) {
+            $headers['x-bypass-throttle'] = 'true';
+        }
+
         if ($this->accessToken) {
             $headers['Authorization'] = "Bearer {$this->accessToken->access_token}";
         }
