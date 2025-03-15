@@ -18,6 +18,8 @@ use SIM_ASN\Client;
  * @method \Illuminate\Support\Collection              getRiwayatPendidikan($id)
  * @method \Illuminate\Support\Collection              getRiwayatDiklat($id)
  * @method \Illuminate\Support\Collection              getRiwayatPelanggaran($id)
+ * @method \Illuminate\Support\Collection              getRiwayatSertifikasi($id)
+ * @method \Illuminate\Support\Collection              getRiwayatInovasi($id)
  * @method \Illuminate\Support\Collection              getDokumen($id)
  * @method \Illuminate\Support\Collection              getFile($id)
  * @method array                                       getCompleteness($id)
@@ -44,6 +46,7 @@ class Pegawai extends Client
         'getRiwayatDiklat' => \SIM_ASN\Request\Pegawai\RiwayatDiklat::class,
         'getRiwayatPelanggaran' => \SIM_ASN\Request\Pegawai\RiwayatPelanggaran::class,
         'getRiwayatSertifikasi' => \SIM_ASN\Request\Pegawai\RiwayatSertifikasi::class,
+        'getRiwayatInovasi' => \SIM_ASN\Request\Pegawai\RiwayatInovasi::class,
         'getRiwayatLhk' => \SIM_ASN\Request\Pegawai\RiwayatLhk::class,
         'getRiwayatSkp' => \SIM_ASN\Request\Pegawai\RiwayatSkp::class,
         'getDokumen' => \SIM_ASN\Request\Pegawai\Dokumen::class,

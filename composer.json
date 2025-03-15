@@ -1,7 +1,7 @@
 {
     "name": "bkpsdm-karawang/sim-asn-php-client",
     "description": "PHP Client for SIM-ASN Service BKPSDM Karawang",
-    "version": "3.1.3",
+    "version": "3.1.4",
     "type": "library",
     "keywords": [
         "sim asn",
