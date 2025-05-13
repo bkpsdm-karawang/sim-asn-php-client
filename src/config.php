@@ -10,6 +10,7 @@ return [
     'client_id' => env('SIM_ASN_CLIENT_ID'),
     'client_secret' => env('SIM_ASN_CLIENT_SECRET'),
     'app_key' => env('SIM_ASN_APP_KEY', null),
+    'profile_url' => env('SIM_ASN_PROFILE_URL', '/private/profile'),
 
     // oauth user service
     'user_callback' => env('SIM_ASN_USER_CALLBACK', env('APP_URL').'/callback/sim-asn'),

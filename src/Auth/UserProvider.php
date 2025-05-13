@@ -18,6 +18,7 @@ class UserProvider implements LaravelUserProvider
     public function retrieveByToken($identifier, $token, $virtualId = null)
     {
         $url = config(ServiceProvider::CONFIG_KEY.'.url');
+        $profileUrl = config(ServiceProvider::CONFIG_KEY.'.profile_url');
         $appKey = config(ServiceProvider::CONFIG_KEY.'.app_key');
 
         $headers = ['x-app-key' => $appKey];
@@ -25,7 +26,7 @@ class UserProvider implements LaravelUserProvider
             $headers['x-virtual-user-id'] = $virtualId;
         }
 
-        $response = Http::withHeaders($headers)->withToken($token)->get($url . '/public/profile');
+        $response = Http::baseUrl($url)->withHeaders($headers)->withToken($token)->get($profileUrl);
 
         if ($response->successful()) {
             $userData = $response->json();
