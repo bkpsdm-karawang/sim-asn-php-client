@@ -22,6 +22,7 @@ class Pegawai extends Base
             'skpd' => Skpd::class,
             'unit_kerja' => UnitKerja::class,
             'pendidikan_terakhir' => Pendidikan::class,
+            'pendidikan' => Pendidikan::class.':collection',
             'golongan' => Golongan::class,
             'jabatan' => Jabatan::class.':collection',
             'as_jabatan' => Jabatan::class,
