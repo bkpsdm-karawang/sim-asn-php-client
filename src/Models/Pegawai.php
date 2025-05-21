@@ -24,6 +24,8 @@ class Pegawai extends Base
             'pendidikan_terakhir' => Pendidikan::class,
             'pendidikan' => Pendidikan::class.':collection',
             'golongan' => Golongan::class,
+            'golongan_awal_cpns' => Golongan::class,
+            'golongan_awal_pns' => Golongan::class,
             'jabatan' => Jabatan::class.':collection',
             'as_jabatan' => Jabatan::class,
             'dokumen_masuk' => Dokumen::class,
