@@ -21,7 +21,7 @@ class SotkController extends Controller
      */
     public function __construct(AppClient $manager)
     {
-        $this->module = $manager::sotk();
+        $this->module = $manager::sotk(false);
     }
 
     /**

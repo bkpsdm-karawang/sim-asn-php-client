@@ -21,7 +21,7 @@ class PegawaiController extends Controller
      */
     public function __construct(AppClient $manager)
     {
-        $this->module = $manager::pegawai();
+        $this->module = $manager::pegawai(false);
     }
 
     /**

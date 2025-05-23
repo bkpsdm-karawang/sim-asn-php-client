@@ -21,7 +21,7 @@ class UnitKerjaController extends Controller
      */
     public function __construct(AppClient $manager)
     {
-        $this->module = $manager::unitKerja();
+        $this->module = $manager::unitKerja(false);
     }
 
     /**

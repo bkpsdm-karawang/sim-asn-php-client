@@ -21,7 +21,7 @@ class SkpdController extends Controller
      */
     public function __construct(AppClient $manager)
     {
-        $this->module = $manager::skpd();
+        $this->module = $manager::skpd(false);
     }
 
     /**

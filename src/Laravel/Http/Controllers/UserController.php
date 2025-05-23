@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function __construct(AppClient $manager)
     {
-        $this->module = $manager::user();
+        $this->module = $manager::user(false);
     }
 
     /**
