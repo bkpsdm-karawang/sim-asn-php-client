@@ -8,6 +8,7 @@ use SIM_ASN\Client;
  * @method \Illuminate\Pagination\LengthAwarePaginator getList(array $query = [])
  * @method \SIM_ASN\Models\Pegawai                     getDetail($id)
  * @method \SIM_ASN\Models\Hierarki                    getHierarki($id)
+ * @method \Illuminate\Support\Collection              getPhotoProfile($id)
  * @method \Illuminate\Support\Collection              getKartuIdentitas($id)
  * @method \Illuminate\Support\Collection              getKontak($id)
  * @method \Illuminate\Support\Collection              getAlamat($id)
@@ -37,6 +38,7 @@ class Pegawai extends Client
     protected $requests = [
         'getList' => \SIM_ASN\Request\Pegawai\Listing::class,
         'getDetail' => \SIM_ASN\Request\Pegawai\Detail::class,
+        'getPhotoProfile' => \SIM_ASN\Request\Pegawai\PhotoProfile::class,
         'getHierarki' => \SIM_ASN\Request\Pegawai\Hierarki::class,
         'getKartuIdentitas' => \SIM_ASN\Request\Pegawai\KartuIdentitas::class,
         'getKontak' => \SIM_ASN\Request\Pegawai\Kontak::class,
