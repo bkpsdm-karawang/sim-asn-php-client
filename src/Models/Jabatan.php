@@ -15,6 +15,8 @@ class Jabatan extends Base
             'golongan' => Golongan::class,
             'referensi' => Ref\Jabatan::class,
             'dokumen' => Dokumen::class,
+            'dokumen_berita_acara' => Dokumen::class,
+            'dokumen_pelantikan' => Dokumen::class,
         ];
     }
 }
