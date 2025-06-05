@@ -8,6 +8,13 @@ use SIM_ASN\Request\BaseDetail;
 class SyncSiasnGolongan extends BaseDetail
 {
     /**
+     * method of request.
+     *
+     * @var string
+     */
+    protected $method = 'PUT';
+
+    /**
      * Access token.
      *
      * @var \Illuminate\Database\Eloquent\Model
