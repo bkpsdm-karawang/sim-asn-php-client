@@ -26,6 +26,7 @@ use SIM_ASN\Client;
  * @method \Illuminate\Support\Collection              getRiwayatPak($id)
  * @method \Illuminate\Support\Collection              getDokumen($id)
  * @method \Illuminate\Support\Collection              getFile($id)
+ * @method \SIM_ASN\Models\Golongan                    syncSiasnGolongan($id)
  * @method array                                       getCompleteness($id)
  */
 class Pegawai extends Client
@@ -58,5 +59,6 @@ class Pegawai extends Client
         'getDokumen' => \SIM_ASN\Request\Pegawai\Dokumen::class,
         'getFile' => \SIM_ASN\Request\Pegawai\File::class,
         'getCompleteness' => \SIM_ASN\Request\Pegawai\Completeness::class,
+        'syncSiasnGolongan' => \SIM_ASN\Request\Pegawai\SyncSiasnGolongan::class,
     ];
 }
