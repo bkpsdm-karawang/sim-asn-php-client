@@ -1,7 +1,7 @@
 {
     "name": "bkpsdm-karawang/sim-asn-php-client",
     "description": "PHP Client for SIM-ASN Service BKPSDM Karawang",
-    "version": "4.0.10",
+    "version": "4.1.0",
     "type": "library",
     "keywords": [
         "sim asn",
@@ -32,7 +32,7 @@
     "require-dev": {
         "laravel/framework": "^11|^12"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "SIM_ASN\\": "src/"

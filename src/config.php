@@ -22,6 +22,9 @@ return [
     ],
 
     // oauth app service
+    // available storage is `file` or `cache` with default `cache`
+    'app_token_storage' => null,
+    'app_token_cache_key' => 'sim_asn_access_token',
     'app_token_path' => 'app/app_access_token.json',
     'app_scope' => env('SIM_ASN_APP_SCOPE', '*'),
 

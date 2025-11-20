@@ -12,6 +12,7 @@ use SIM_ASN\Modules\Sotk as SotkModule;
 use SIM_ASN\Modules\UnitKerja as UnitKerjaModule;
 use SIM_ASN\Modules\User as UserModule;
 use SIM_ASN\Request\Base as BaseRequest;
+use Illuminate\Support\Facades\Cache;
 
 class AppClient extends Client
 {
@@ -43,9 +44,7 @@ class AppClient extends Client
         }
 
         $accessToken = OauthClient::requestAppToken();
-        $path = ServiceProvider::config('app_token_path');
-
-        $this->saveAccessToken($path, $accessToken);
+        $this->saveAccessToken($accessToken);
 
         return $accessToken;
     }
@@ -53,8 +52,29 @@ class AppClient extends Client
     /**
      * save acess token.
      */
-    protected function saveAccessToken($path, AccessToken $accessToken): void
+    protected function saveAccessToken(AccessToken $accessToken): void
     {
+        $defaultStorage = 'cache';
+        $storage = ServiceProvider::config('app_token_storage', $defaultStorage);
+
+        if (!in_array($storage, ['file', 'cache'])) {
+            $storage = $defaultStorage;
+        }
+
+        if ($storage === 'file') {
+            $this->saveAccessTokenToFile($accessToken);
+        } else {
+            $this->saveAccessTokenToCache($accessToken);
+        }
+    }
+
+    /**
+     * save access token to file
+     */
+    protected function saveAccessTokenToFile(AccessToken $accessToken)
+    {
+        $path = ServiceProvider::config('app_token_path');
+
         if (function_exists('storage_path')) {
             $path = storage_path($path);
         }
@@ -63,9 +83,38 @@ class AppClient extends Client
     }
 
     /**
+     * save access token to cache
+     */
+    protected function saveAccessTokenToCache(AccessToken $accessToken)
+    {
+        $key = ServiceProvider::config('app_token_cache_key');
+
+        Cache::put($key, json_encode($accessToken->toArray()), $accessToken->expires_in ?? 3600);
+    }
+
+    /**
      * get local token.
      */
     protected function getLocalToken(): ?AccessToken
+    {
+        $defaultStorage = 'cache';
+        $storage = ServiceProvider::config('app_token_storage', $defaultStorage);
+
+        if (!in_array($storage, ['file', 'cache'])) {
+            $storage = $defaultStorage;
+        }
+
+        if ($storage === 'file') {
+            return $this->getLocalTokenFromFile();
+        } else {
+            return $this->getLocalTokenFromCache();
+        }
+    }
+
+    /**
+     * get local token from file
+     */
+    protected function getLocalTokenFromFile(): ?AccessToken
     {
         $path = ServiceProvider::config('app_token_path');
 
@@ -75,6 +124,25 @@ class AppClient extends Client
 
         if (file_exists($path)) {
             $data = file_get_contents($path);
+            $decoded = json_decode($data, null);
+            if (is_array($decoded) && $this->isValidToken($decoded)) {
+                return new AccessToken($decoded);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * get local token from file
+     */
+    protected function getLocalTokenFromCache(): ?AccessToken
+    {
+        $key = ServiceProvider::config('app_token_cache_key');
+
+        $data = Cache::get($key);
+
+        if ($data) {
             $decoded = json_decode($data, null);
             if (is_array($decoded) && $this->isValidToken($decoded)) {
                 return new AccessToken($decoded);
